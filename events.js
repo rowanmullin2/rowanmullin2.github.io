@@ -83,3 +83,16 @@ function isValidForm() {
 
     return valid
 }
+
+submitButton.addEventListener("click", (e) => {
+    e.preventDefault()
+    let isValid = isValidForm()
+    if (isValid === true) {
+        storeInput(
+        eventNameInput.value, 
+        representativeNameInput.value, 
+        representativeEmailInput.value, 
+        roleSelected.value);
+    }
+})
+
