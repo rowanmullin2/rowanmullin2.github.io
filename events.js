@@ -12,3 +12,10 @@ function showError(inputNode, message) {
     console.log('Error Displayed')
 }
 
+function clearError () {
+    let errors = document.querySelectorAll(".error");
+    errors.forEach((error) => {
+        error.remove();
+    })
+    console.log("Errors cleared")
+}
