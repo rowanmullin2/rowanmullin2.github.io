@@ -7,7 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-   
+    <form action="" method="post" class="event-form">
+        <label for="event-name" >Event Name: <Input type="text" id="event-name" placeholder="Event's name"></Input></label>
+        <label for="representative-name" >Company Representative's Name: <Input type="text" id="representative-name" placeholder="Company's Representative Name"></Input></label>
+        <label for="representative-email" >Representative's Email: <Input type="email" id="representative-email" placeholder="Representative's email address"></Input></label>
+        <label for="company-role">Role Selection:<select name="role-selection" id="company-role" >
+            <option value="" disabled selected>Choose role...</option>
+            <option value="sponsor">Sponsor</option>
+            <option value="participant">Participant</option>
+            <option value="organizer">Organizer</option>
+        </select></label>
+    </form>
     <script src="events.js"></script>
 </body>
 </html>
