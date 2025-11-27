@@ -96,3 +96,12 @@ submitButton.addEventListener("click", (e) => {
     }
 })
 
+const formStorage = [];
+function storeInput(eveNameInput, repreName, repreEmail, repreRole) {
+    formStorage.push({
+        eveNameInput, 
+        repreName, 
+        repreEmail, 
+        repreRole});
+    console.log(formStorage);
+}
