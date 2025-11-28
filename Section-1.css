@@ -1,0 +1,159 @@
+/* Reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  font-family: comic sans;
+  line-height: 1.6;
+  background-color: #111142;
+  color: #979799;
+  padding: 20px;
+}
+
+/* Headings */
+h1, h2 {
+  color: #C96DE5;
+  margin-bottom: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form container */
+section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  box-shadow: 0 4px 8px #111142;
+}
+
+/* Form fields */
+.form-field {
+  margin-bottom: 15px;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #C96DE5;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+  border-color: #979799;
+  outline: none;
+  box-shadow: 0 0 4px rgba(26, 50, 67, 0.4);
+}
+
+/* Button */
+button {
+  background-color: #979799;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.5s ease;
+}
+
+button:hover {
+  background-color: #111142;
+}
+
+* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #111142;
+}
+
+/* Embedded sections (object/iframe) */
+object, iframe {
+  border: 1px solid #111142;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+/* Donation Table */
+#donation-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  max-width: 800px;
+  background: #979799;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#donation-table th,
+#donation-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+#donation-table thead {
+  background-color: #979799;
+  color: #fff;
+}
+
+#donation-table tbody tr:nth-child(even) {
+  background-color: #979799;
+}
+#donation-table tbody tr:hover {
+  background-color: #979799;
+  transition: background 0.3s ease;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #C96DE5;
+  color: #979799;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #C96DE5;
+}
+
+/* Summary Section */
+section h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #111142;
+}
+
+#total-donated {
+  font-weight: bold;
+  color: #C96DE5;
+  font-size: 1.2rem;
+}
+section p {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+
+
