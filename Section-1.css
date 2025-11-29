@@ -61,7 +61,7 @@ input:focus, textarea:focus {
 
 /* Button */
 button {
-  background-color: #979799;
+  background-color: #111142;
   color: #fff;
   border: none;
   padding: 12px 20px;
@@ -95,8 +95,8 @@ object, iframe {
   border-collapse: collapse;
   margin: 20px auto;
   max-width: 800px;
-  background: #979799;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #111142;
+  box-shadow: 0 4px 8px #979799;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -108,7 +108,7 @@ object, iframe {
 }
 
 #donation-table thead {
-  background-color: #979799;
+  background-color: #111142;
   color: #fff;
 }
 
