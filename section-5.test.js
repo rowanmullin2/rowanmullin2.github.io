@@ -1,5 +1,2 @@
-if (typeof window !== "undefined") {
-    window.onload = init;
-} 
-
-module.exports = {};
+const { JSDOM } = require("jsdom");
+const {  } = require("./section-5.js");
