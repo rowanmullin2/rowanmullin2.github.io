@@ -23,3 +23,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!date) {
       errors.push("Date of donation is required.");
+    // Show errors or proceed
+    if (errors.length > 0) {
+      alert(errors.join("\n"));
+      return;
+    }
+
+    // Temporary data object
+    const donationData = {
+      charity,
+      amount,
+      date,
+      comment,
+    };
+
+    // For now, just log the data (you can later push to an array or API)
+    console.log("Donation recorded:", donationData);
+
+    // Optional: give user feedback
+    alert("Donation successfully added!");
+
+    // Reset form
+    form.reset();
+  });
+});
+
