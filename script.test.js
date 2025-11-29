@@ -4,10 +4,11 @@
 
 import fs from "fs";
 import path from "path";
+import { validateDonation, processDonation } from "../section-1(2).js";
 
 // Load the HTML file into JSDOM
 const html = fs.readFileSync(path.resolve(__dirname, "../index.html"), "utf8");
-
+ // Integration Tests
 describe("Donation Tracker Form Integration Tests", () => {
   let form;
   let charityInput;
@@ -29,7 +30,7 @@ describe("Donation Tracker Form Integration Tests", () => {
     dateInput = document.getElementById("date");
     commentInput = document.getElementById("comment");
 
-    / Mock alert and console.log so we can test them
+    // Mock alert and console.log so we can test them
     global.alert = jest.fn();
     global.console.log = jest.fn();
   });
@@ -80,5 +81,63 @@ describe("Donation Tracker Form Integration Tests", () => {
     expect(global.console.log).not.toHaveBeenCalled();
   });
 });
+
+describe("Donation Tracker Unit Tests", () => {
+  
+  // Unit Tests
+  
+  test("Identifies empty required fields", () => {
+    const errors = validateDonation({ charity: "", amount: "", date: "" });
+    expect(errors).toContain("Charity name is required.");
+    expect(errors).toContain("Donation amount must be a valid positive number.");
+    expect(errors).toContain("Date of donation is required.");
+  });
+
+  test("Flags invalid donation amounts (non-numeric)", () => {
+    const errors = validateDonation({ charity: "UNICEF", amount: "abc", date: "2025-11-28" });
+    expect(errors).toContain("Donation amount must be a valid positive number.");
+  });
+
+  test("Flags invalid donation amounts (negative)", () => {
+    const errors = validateDonation({ charity: "UNICEF", amount: -50, date: "2025-11-28" });
+    expect(errors).toContain("Donation amount must be a valid positive number.");
+  });
+
+  test("Returns no errors for valid input", () => {
+    const errors = validateDonation({ charity: "UNICEF", amount: 100, date: "2025-11-28" });
+    expect(errors).toEqual([]); // no errors
+  });
+
+  
+  // DATA PROCESSING TESTS
+  
+  test("Returns correct donation object for valid inputs", () => {
+    const donation = processDonation({
+      charity: " Red Cross ",
+      amount: "200",
+      date: "2025-11-28",
+      comment: " Great work! ",
+    });
+
+    expect(donation).toEqual({
+      charity: "Red Cross", // trimmed
+      amount: 200,          // parsed to number
+      date: "2025-11-28",
+      comment: "Great work!", // trimmed
+    });
+  });
+
+  test("Handles optional comment gracefully", () => {
+    const donation = processDonation({
+      charity: "UNICEF",
+      amount: "50",
+      date: "2025-11-28",
+      comment: "",
+    });
+
+    expect(donation.comment).toBe(""); // empty string if no comment
+  });
+});
+
 
 
