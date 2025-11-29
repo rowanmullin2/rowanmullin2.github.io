@@ -89,71 +89,7 @@ object, iframe {
   border-radius: 6px;
   margin-bottom: 20px;
 }
-/* Donation Table */
-#donation-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px auto;
-  max-width: 800px;
-  background: #111142;
-  box-shadow: 0 4px 8px #979799;
-  border-radius: 8px;
-  overflow: hidden;
-}
 
-#donation-table th,
-#donation-table td {
-  padding: 12px 15px;
-  text-align: left;
-}
-
-#donation-table thead {
-  background-color: #111142;
-  color: #fff;
-}
-
-#donation-table tbody tr:nth-child(even) {
-  background-color: #979799;
-}
-#donation-table tbody tr:hover {
-  background-color: #979799;
-  transition: background 0.3s ease;
-}
-
-/* Delete Button */
-.delete-btn {
-  background-color: #C96DE5;
-  color: #979799;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.3s ease;
-}
-
-.delete-btn:hover {
-  background-color: #C96DE5;
-}
-
-/* Summary Section */
-section h2 {
-  margin-top: 30px;
-  margin-bottom: 10px;
-  text-align: center;
-  color: #111142;
-}
-
-#total-donated {
-  font-weight: bold;
-  color: #C96DE5;
-  font-size: 1.2rem;
-}
-section p {
-  text-align: center;
-  font-size: 1rem;
-  margin-top: 10px;
-}
 
 
 
