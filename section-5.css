@@ -5,3 +5,12 @@
 	--color-tertiary: #C96DE5
 }
 
+body {
+	width: 90%;
+	margin-left: 5%;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
