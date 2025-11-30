@@ -16,6 +16,13 @@ function validateName(nameInput) {
 
 // setup other validations
 
+function clearErrors() {
+    const errs = document.querySelectorAll('.err-msg');
+    errs.forEach(err => {
+        err.remove();
+    });
+}
+
 function displayError(element, msg) {
     let err = document.createElement("div");
     err.innerHTML = msg;
@@ -26,6 +33,7 @@ function displayError(element, msg) {
 // setup error check manager
 
 function buildObject() {
+    clearErrors();
     let new_object = {
         name:validateName(nameInput),
         email:emailInput.value,
@@ -33,12 +41,12 @@ function buildObject() {
         amount:amountInput.value,
         comment:commentsInput.value
     }
-    console.log(new_object)
+    console.log(new_object);
 }
 
 submitButton.addEventListener('click', (e) => {
-    e.preventDefault()
-    buildObject()
+    e.preventDefault();
+    buildObject();
 })
 
 
