@@ -16,3 +16,7 @@ form {
 	display: flex;
 	flex-direction: column;
 }
+
+.err-msg {
+	color: red
+}

@@ -6,7 +6,7 @@ const commentsInput = document.querySelector("#comment-input");
 const submitButton = document.querySelector("#submit-button");
 
 function validateName(nameInput) {
-    const nameStr = nameInput.value.strip();
+    const nameStr = nameInput.value.trim();
     if (nameStr == "") {
         displayError(nameInput, "Name cannot be blank / empty.");
     } else {
@@ -14,15 +14,20 @@ function validateName(nameInput) {
     }
 }
 
+// setup other validations
+
 function displayError(element, msg) {
     let err = document.createElement("div");
     err.innerHTML = msg;
-    element.appendChild(err);
+    err.classList = "err-msg"
+    element.parentNode.appendChild(err);
 }
+
+// setup error check manager
 
 function buildObject() {
     let new_object = {
-        name:nameInput.value,
+        name:validateName(nameInput),
         email:emailInput.value,
         donation:donationInput.value,
         amount:amountInput.value,
