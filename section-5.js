@@ -1,9 +1,9 @@
-const nameInput = document.querySelector("#name-input");
-const emailInput = document.querySelector("#email-input");
-const donationInput = document.querySelector("#donation-input");
-const amountInput = document.querySelector("#amount-input");
-const commentsInput = document.querySelector("#comment-input");
-const submitButton = document.querySelector("#submit-button");
+let nameInputElement;
+let emailInputElement;
+let donationInputElement;
+let amountInputElement;
+let commentsInputElement;
+let submitButtonElement;
 
 function validateName(nameInput) {
     const nameStr = nameInput.value.trim();
@@ -63,11 +63,11 @@ function displayError(element, msg) {
 function buildObject() {
     clearErrors();
     let new_object = {
-        name:validateName(nameInput),
-        email:validateEmail(emailInput),
-        donation:validateDonation(donationInput),
-        amount:validateAmount(amountInput),
-        comment:commentsInput.value
+        name:validateName(nameInputElement),
+        email:validateEmail(emailInputElement),
+        donation:validateDonation(donationInputElement),
+        amount:validateAmount(amountInputElement),
+        comment:commentsInputElement.value
     }
     if (document.querySelector(".err-msg")) {
         console.log("invalid input")
@@ -76,12 +76,22 @@ function buildObject() {
     }
 }
 
-submitButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    buildObject();
-})
+function init() {
+    nameInputElement = document.querySelector("#name-input");
+    emailInputElement = document.querySelector("#email-input");
+    donationInputElement = document.querySelector("#donation-input");
+    amountInputElement = document.querySelector("#amount-input");
+    commentsInputElement = document.querySelector("#comment-input");
+    submitButtonElement = document.querySelector("#submit-button");
 
+    submitButtonElement.addEventListener('click', (e) => {
+        e.preventDefault();
+        buildObject();
+    })
+}
 
 if (typeof window === "undefined") {
-    module.exports = {validateName, validateEmail, validateDonation, validateAmount, clearErrors, displayError, buildObject};
+    module.exports = {validateName, validateEmail, validateDonation, validateAmount, clearErrors, displayError, buildObject, init};
+} else {
+    init()
 }
