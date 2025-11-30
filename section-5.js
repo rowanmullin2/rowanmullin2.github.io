@@ -46,8 +46,6 @@ function validateAmount(amountInput) {
     }
 }
 
-// setup other validations
-
 function clearErrors() {
     const errs = document.querySelectorAll('.err-msg');
     errs.forEach(err => {
@@ -61,8 +59,6 @@ function displayError(element, msg) {
     err.classList = "err-msg"
     element.parentNode.appendChild(err);
 }
-
-// setup error check manager
 
 function buildObject() {
     clearErrors();
@@ -87,5 +83,5 @@ submitButton.addEventListener('click', (e) => {
 
 
 if (typeof window === "undefined") {
-    module.exports = {validateName, buildObject};
+    module.exports = {validateName, validateEmail, validateDonation, validateAmount, clearErrors, displayError, buildObject};
 }
