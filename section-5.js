@@ -14,6 +14,38 @@ function validateName(nameInput) {
     }
 }
 
+function validateEmail(emailInput) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/
+    const emailStr = emailInput.value.trim();
+    if (emailStr == "") {
+        displayError(emailInput, "Email cannot be blank / empty.");
+    } else if(emailRegex.test(emailStr)) {
+        displayError(emailInput, "Email must be valid.");
+    } else {
+        return emailStr;
+    }
+}
+
+function validateDonation(donationInput) {
+    const donationStr = donationInput.value.trim();
+    if (donationStr == "") {
+        displayError(donationInput, "Donation Item cannot be blank / empty.");
+    } else {
+        return donationStr;
+    }
+}
+
+function validateAmount(amountInput) {
+    const amountInt = parseInt(amountInput.value);
+    if (isNaN(amountInt)) {
+        displayError(amountInput, "Please enter an amount.");
+    } else if (amountInt <= 0) {
+        displayError(amountInput, "amount must be at least 1.");
+    } else {
+        return amountInt;
+    }
+}
+
 // setup other validations
 
 function clearErrors() {
@@ -36,12 +68,16 @@ function buildObject() {
     clearErrors();
     let new_object = {
         name:validateName(nameInput),
-        email:emailInput.value,
-        donation:donationInput.value,
-        amount:amountInput.value,
+        email:validateEmail(emailInput),
+        donation:validateDonation(donationInput),
+        amount:validateAmount(amountInput),
         comment:commentsInput.value
     }
-    console.log(new_object);
+    if (document.querySelector(".err-msg")) {
+        console.log("invalid input")
+    } else {
+        console.log(new_object);
+    }
 }
 
 submitButton.addEventListener('click', (e) => {
@@ -51,5 +87,5 @@ submitButton.addEventListener('click', (e) => {
 
 
 if (typeof window === "undefined") {
-    module.exports = {buildObject};
+    module.exports = {validateName, buildObject};
 }
