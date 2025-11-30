@@ -1,82 +1,122 @@
 <!-- This line declares that the document is an HTML5 document -->
 <!DOCTYPE html>
-<!-- This line opens the root html element and sets the language of the page to English -->
+<!-- This line opens the root html element and sets the language to English -->
 <html lang="en">
-	<!-- This line opens the head section, which contains metadata and links for the page -->
+	<!-- This line opens the head section, which holds metadata and linked resources -->
 	<head>
-		<!-- This line sets the character encoding so the browser correctly interprets text -->
+		<!-- This line sets the character encoding so the browser reads text correctly -->
 		<meta charset="UTF-8">
-		<!-- This line sets the viewport so the layout works well on mobile devices -->
+		<!-- This line sets the viewport to make the layout responsive on mobile devices -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- This line sets the title of the page that appears in the browser tab -->
+		<!-- This line sets the text that appears in the browser tab for this page -->
 		<title>PiXELL River Financial - Sponsor Tracker</title>
-		<!-- This line links to the external CSS file that will style the sponsor tracker page -->
+		<!-- This line links the HTML file to the external CSS file that styles this page -->
 		<link rel="stylesheet" href="sponsor-tracker.css">
 	<!-- This line closes the head section -->
 	</head>
-	<!-- This line opens the body section, which contains all visible content on the page -->
+	<!-- This line opens the body section, which contains all visible content -->
 	<body>
-		<!-- This line starts the site header that will appear at the top of the page -->
+		<!-- This line starts the header area that appears at the top of the page -->
 		<header>
-			<!-- This line displays the main heading for the site or page name -->
+			<!-- This line displays the main title for the Community Support pages -->
 			<h1>PiXELL River Financial - Community Support</h1>
-			<!-- This line starts a navigation section for moving between different components -->
+			<!-- This line opens the navigation area for links to different tracker components -->
 			<nav>
 				<!-- This line creates an unordered list to hold the navigation links -->
 				<ul>
-					<!-- This line creates a navigation item that could link to the donation tracker page -->
+					<!-- This line adds a navigation item that could link to the donation tracker page -->
 					<li><a href="donation-tracker.html">Donations</a></li>
-					<!-- This line creates a navigation item that could link to the volunteer hours tracker page -->
+					<!-- This line adds a navigation item that could link to the volunteer hours tracker page -->
 					<li><a href="volunteer-hours-tracker.html">Volunteer Hours</a></li>
-					<!-- This line creates a navigation item that could link to the event signup component page -->
+					<!-- This line adds a navigation item that could link to the event signup component page -->
 					<li><a href="event-signup.html">Events</a></li>
-					<!-- This line creates a navigation item indicating we are on the sponsor tracker page -->
+					<!-- This line adds a navigation item that links to the current sponsor tracker page -->
 					<li><a href="sponsor-tracker.html">Sponsors</a></li>
-				<!-- This line closes the unordered list used for navigation -->
+				<!-- This line closes the unordered list of navigation links -->
 				</ul>
-			<!-- This line closes the navigation section -->
+			<!-- This line closes the navigation element -->
 			</nav>
 		<!-- This line closes the header section -->
 		</header>
 
-		<!-- This line opens the main element, which holds the primary content of the page -->
+		<!-- This line opens the main element, which contains the primary page content -->
 		<main>
-			<!-- This line starts the section that will contain the sponsor tracker component -->
+			<!-- This line opens the sponsor tracker section where the sponsor form will live -->
 			<section id="sponsor-tracker">
-				<!-- This line shows the heading for the sponsor tracker section -->
+				<!-- This line shows the heading for the sponsor section -->
 				<h2>Sponsor</h2>
-				<!-- This line adds a short paragraph describing the purpose of the sponsor section -->
-				<p>This section will track sponsors who support our community events.</p>
-				<!-- This line adds a subheading to label the planned fields, matching the provided screenshot idea -->
-				<h3>Planned Sponsor Fields</h3>
-				<!-- This line starts an unordered list to show the fields that will be part of the sponsor form -->
-				<ul>
-					<!-- This line lists the Brand or Company field that sponsors will fill in -->
-					<li>Brand/Company</li>
-					<!-- This line lists the Name field for the sponsor contact person -->
-					<li>Name</li>
-					<!-- This line lists the Email field for contacting the sponsor -->
-					<li>Email</li>
-					<!-- This line lists the Comment field where the sponsor can leave a message -->
-					<li>Comment</li>
-					<!-- This line lists the Event Sponsored field that notes which event is being supported -->
-					<li>Event sponsored</li>
-				<!-- This line closes the unordered list that previews the form fields -->
-				</ul>
-				<!-- This line adds a note explaining that a full form will replace this list in the next step -->
-				<p>A full sponsor form will be added here in the next step.</p>
+				<!-- This line gives a short description of what the sponsor form is used for -->
+				<p>Use this form to record sponsors who support our community events.</p>
+
+				<!-- This line opens the form element that will collect sponsor information -->
+				<form id="sponsor-form">
+					<!-- This line groups the Brand or Company input with its label -->
+					<div class="form-group">
+						<!-- This line labels the Brand or Company input field for accessibility -->
+						<label for="sponsor-brand">Brand/Company</label>
+						<!-- This line creates a text input where the sponsor&apos;s brand or company name is entered -->
+						<input id="sponsor-brand" name="brand" type="text" required>
+					<!-- This line closes the Brand/Company form group -->
+					</div>
+
+					<!-- This line groups the Name input with its label -->
+					<div class="form-group">
+						<!-- This line labels the Name input field for accessibility -->
+						<label for="sponsor-name">Name</label>
+						<!-- This line creates a text input where the sponsor contact person&apos;s name is entered -->
+						<input id="sponsor-name" name="name" type="text" required>
+					<!-- This line closes the Name form group -->
+					</div>
+
+					<!-- This line groups the Email input with its label -->
+					<div class="form-group">
+						<!-- This line labels the Email input field for accessibility -->
+						<label for="sponsor-email">Email</label>
+						<!-- This line creates an email input where the sponsor contact email is entered -->
+						<input id="sponsor-email" name="email" type="email" required>
+					<!-- This line closes the Email form group -->
+					</div>
+
+					<!-- This line groups the Comment input with its label -->
+					<div class="form-group">
+						<!-- This line labels the Comment textarea field for accessibility -->
+						<label for="sponsor-comment">Comment</label>
+						<!-- This line creates a textarea where optional comments from the sponsor can be entered -->
+						<textarea id="sponsor-comment" name="comment" rows="3"></textarea>
+					<!-- This line closes the Comment form group -->
+					</div>
+
+					<!-- This line groups the Event Sponsored input with its label -->
+					<div class="form-group">
+						<!-- This line labels the Event Sponsored input field for accessibility -->
+						<label for="sponsor-event">Event Sponsored</label>
+						<!-- This line creates a text input where the name of the sponsored event is entered -->
+						<input id="sponsor-event" name="event" type="text" required>
+					<!-- This line closes the Event Sponsored form group -->
+					</div>
+
+					<!-- This line groups the buttons that submit or clear the form -->
+					<div class="form-actions">
+						<!-- This line creates a button that will submit the form data -->
+						<button type="submit">Add Sponsor</button>
+						<!-- This line creates a button that will clear all fields in the form -->
+						<button type="reset">Clear Form</button>
+					<!-- This line closes the form actions button group -->
+					</div>
+				<!-- This line closes the sponsor form element -->
+				</form>
 			<!-- This line closes the sponsor tracker section -->
 			</section>
 		<!-- This line closes the main content area -->
 		</main>
 
-		<!-- This line opens the footer section at the bottom of the page -->
+		<!-- This line opens the footer that appears at the bottom of the page -->
 		<footer>
-			<!-- This line displays a simple copyright or ownership statement -->
+			<!-- This line shows a simple copyright-style message in the footer -->
 			<p>&copy; 2025 PiXELL River Financial - Community Support Tracker</p>
-		<!-- This line closes the footer section -->
+		<!-- This line closes the footer element -->
 		</footer>
-	<!-- This line closes the body element that contains all visible content -->
+	<!-- This line closes the body element that holds all visible content -->
 	</body>
 <!-- This line closes the root html element -->
 </html>
