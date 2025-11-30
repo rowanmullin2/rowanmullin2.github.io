@@ -1,0 +1,158 @@
+/* This line selects the root element so we can define CSS variables for the whole page */
+:root {
+	/* This line defines a CSS variable holding the default font family for the entire site */
+	--default-font: 'Comic Sans MS', sans-serif;
+	/* This line defines a CSS variable for the primary brand colour used in headers and accents */
+	--color-primary: #111142;
+	/* This line defines a CSS variable for the secondary brand colour used for the page background */
+	--color-secondary: #979799;
+	/* This line defines a CSS variable for the tertiary accent colour used for highlights and borders */
+	--color-tertiary: #C96DE5;
+	/* This line closes the :root rule block */
+}
+
+/* This line styles the body element, which wraps all visible page content */
+body {
+	/* This line applies the default font family using the CSS variable defined in :root */
+	font-family: var(--default-font);
+	/* This line sets the page background colour using the secondary brand colour variable */
+	background-color: var(--color-secondary);
+	/* This line sets the default text colour to the primary brand colour for good contrast */
+	color: var(--color-primary);
+	/* This line removes the browser’s default margin so layout can reach the edges */
+	margin: 0;
+	/* This line ensures the body is at least as tall as the browser viewport */
+	min-height: 100vh;
+	/* This line closes the body rule block */
+}
+
+/* This line styles the header section at the top of the page */
+header {
+	/* This line applies the primary brand colour as the header background */
+	background-color: var(--color-primary);
+	/* This line sets the header text colour to white so it is readable on the dark background */
+	color: white;
+	/* This line adds padding inside the header to space out its content */
+	padding: 1rem;
+	/* This line closes the header rule block */
+}
+
+/* This line styles the main heading inside the header */
+header h1 {
+	/* This line removes the default margin around the heading for tighter spacing control */
+	margin: 0;
+	/* This line sets the font size of the main page title */
+	font-size: 1.5rem;
+	/* This line closes the header h1 rule block */
+}
+
+/* This line styles the navigation area inside the header */
+nav {
+	/* This line adds space above the navigation to separate it from the main heading */
+	margin-top: 0.5rem;
+	/* This line closes the nav rule block */
+}
+
+/* This line styles the unordered list that holds the navigation items */
+nav ul {
+	/* This line removes the default bullet points from the navigation list */
+	list-style: none;
+	/* This line removes default padding from the navigation list */
+	padding: 0;
+	/* This line arranges the navigation items horizontally using flexbox */
+	display: flex;
+	/* This line adds a small gap between each navigation item */
+	gap: 1rem;
+	/* This line removes the default margin around the navigation list */
+	margin: 0;
+	/* This line closes the nav ul rule block */
+}
+
+/* This line styles each list item in the navigation menu */
+nav li {
+	/* This line keeps the list item margin at zero so spacing is controlled by the gap on the list */
+	margin: 0;
+	/* This line closes the nav li rule block */
+}
+
+/* This line styles the navigation links themselves */
+nav a {
+	/* This line sets the navigation link text to white for readability on the dark header background */
+	color: white;
+	/* This line removes the default underline from navigation links */
+	text-decoration: none;
+	/* This line sets the font size of the navigation links */
+	font-size: 0.95rem;
+	/* This line closes the nav a rule block */
+}
+
+/* This line styles the hover state of navigation links */
+nav a:hover {
+	/* This line adds an underline on hover to give visual feedback for interactivity */
+	text-decoration: underline;
+	/* This line closes the nav a:hover rule block */
+}
+
+/* This line styles the main content area of the page */
+main {
+	/* This line adds padding around the main content so it does not touch the browser edges */
+	padding: 1.5rem;
+	/* This line closes the main rule block */
+}
+
+/* This line styles the sponsor tracker section specifically */
+#sponsor-tracker {
+	/* This line sets a white background so the sponsor card stands out from the grey page background */
+	background-color: white;
+	/* This line sets the text colour within the sponsor section to the primary brand colour */
+	color: var(--color-primary);
+	/* This line adds padding inside the sponsor section for comfortable spacing */
+	padding: 1rem;
+	/* This line rounds the corners of the sponsor section for a card-like look */
+	border-radius: 4px;
+	/* This line adds a border around the sponsor section using the tertiary accent colour */
+	border: 2px solid var(--color-tertiary);
+	/* This line limits the maximum width of the sponsor section to keep text line length readable */
+	max-width: 600px;
+	/* This line centers the sponsor section horizontally using automatic left and right margins */
+	margin: 0 auto;
+	/* This line closes the #sponsor-tracker rule block */
+}
+
+/* This line styles the level-two heading inside the sponsor tracker section */
+#sponsor-tracker h2 {
+	/* This line removes top margin and keeps a small margin below the heading */
+	margin: 0 0 0.5rem 0;
+	/* This line closes the #sponsor-tracker h2 rule block */
+}
+
+/* This line styles paragraph text inside the sponsor tracker section */
+#sponsor-tracker p {
+	/* This line sets a margin below each paragraph to separate it from following elements */
+	margin: 0 0 0.75rem 0;
+	/* This line closes the #sponsor-tracker p rule block */
+}
+
+/* This line styles the unordered list that previews the sponsor fields */
+#sponsor-tracker ul {
+	/* This line indents the list items slightly from the left edge of the card */
+	padding-left: 1.2rem;
+	/* This line adds space below the list to separate it from the text that follows */
+	margin: 0 0 0.75rem 0;
+	/* This line closes the #sponsor-tracker ul rule block */
+}
+
+/* This line styles the footer section at the bottom of the page */
+footer {
+	/* This line applies the primary brand colour as the background of the footer for visual consistency */
+	background-color: var(--color-primary);
+	/* This line sets the footer text colour to white for contrast with the dark background */
+	color: white;
+	/* This line adds padding inside the footer for spacing around its text */
+	padding: 0.75rem;
+	/* This line centers the footer text horizontally */
+	text-align: center;
+	/* This line sets a slightly smaller font size for the footer text */
+	font-size: 0.85rem;
+	/* This line closes the footer rule block */
+}
