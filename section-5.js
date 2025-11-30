@@ -5,6 +5,10 @@ const amountInput = document.querySelector("#amount-input")
 const commentsInput = document.querySelector("#comment-input")
 const submitButton = document.querySelector("#submit-button")
 
+function validateName() {
+
+}
+
 function buildObject() {
     let new_object = {
         name:nameInput.value,
