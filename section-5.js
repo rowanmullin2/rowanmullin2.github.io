@@ -8,10 +8,16 @@ const submitButton = document.querySelector("#submit-button");
 function validateName(nameInput) {
     const nameStr = nameInput.value.strip();
     if (nameStr == "") {
-        //displayError("Name cannot be blank / empty.");
+        displayError(nameInput, "Name cannot be blank / empty.");
     } else {
         return nameStr;
     }
+}
+
+function displayError(element, msg) {
+    let err = document.createElement("div");
+    err.innerHTML = msg;
+    element.appendChild(err);
 }
 
 function buildObject() {
