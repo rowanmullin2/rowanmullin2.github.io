@@ -21,7 +21,7 @@ describe("Donation Tracker Form Integration Tests", () => {
     document.documentElement.innerHTML = html.toString();
 
     // Import the JS file that attaches event listeners
-    require("../section-1.js");
+    require("../section-1(2).js");
 
     // Get form and inputs
     form = document.getElementById("donation-form");
