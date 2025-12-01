@@ -1,32 +1,28 @@
 {
-	"name": "mullin-rowan-assignment-7",
-  	"version": "1.0.0",
-	"description": "",
-	"main": "script.js",
-	"scripts": {
-		"test": "jest"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/rowanmullin2/rowanmullin2.github.io.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"type": "commonjs",
-	"bugs": {
-		"url": "https://github.com/rowanmullin2/rowanmullin2.github.io/issues"
-	},
-	"homepage": "https://github.com/rowanmullin2/rowanmullin2.github.io#readme",
-	"devDependencies": {
-		"jest": "^30.2.0",
-		"jest-junit": "^16.0.0",
-		"jsdom": "^26.1.0"
-	},
-	"jest": {
-		"reporters": [
-		"default",
-		["jest-junit", { "outputDirectory": "test-results/jest" }]
-		]
-	}
+ "name": "mullin-rowan-assignment-7",
+ "version": "1.0.0",
+ "description": "PiXELL River Financial prides itself on being a good citizen. As part of our commitment to the communities in which we live and work, we are developing a Community Support Tracker. This tool will help us monitor and manage our various community support initiatives, ensuring we're making a meaningful impact.",
+ "main": "script.js",
+ "scripts": {
+  "test": "jest"
+ },
+"homepage": "https://github.com/rowanmullin2/rowanmullin2.github.io#readme",
+ "devDependencies": {
+  "jest": "^30.2.0",
+  "jest-environment-jsdom": "^30.2.0",
+  "jest-junit": "^16.0.0",
+  "jsdom": "^26.1.0"
+ },
+ "jest": {
+  "reporters": [
+   "default",
+   [
+    "jest-junit",
+    {
+     "outputDirectory": "test-results/jest"
+    }
+   ]
+  ]
+ }
 }
+ 
