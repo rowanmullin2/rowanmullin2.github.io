@@ -17,7 +17,7 @@ const {
 	createSponsorEntry,
 	validateSponsorData,
 	handleSponsorFormSubmit,
-} = require("./sponsor-tracker.js");
+} = require("./section-4.js");
 
 // This line starts a Jest describe block that groups tests related to the createSponsorEntry function
 describe("createSponsorEntry", () => {

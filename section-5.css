@@ -1,0 +1,22 @@
+:root {
+	--default-font: 'Comic Sans MS', sans-serif;
+	--color-primary: #111142
+	--color-secondary: #979799
+	--color-tertiary: #C96DE5
+}
+
+body {
+	width: 80%;
+	margin-left: 10%;
+	font-family: var(--default-font);
+	background-color: var(--color-secondary);
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+.err-msg {
+	color: red
+}
