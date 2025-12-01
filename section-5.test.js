@@ -47,19 +47,33 @@ describe("Unit Tests", () => {
 	test("validateEmail validates correctly", () => {
 		const emailInput = global.document.querySelector("#email-input")
 		emailInput.value = "tim@gmail.com"
-		expect(validateName(emailInput)).toBe("tim@gmail.com");
+		expect(validateEmail(emailInput)).toBe("tim@gmail.com");
 	});
 
 	test("validateDonation validates correctly", () => {
 		const donationInput = global.document.querySelector("#donation-input")
 		donationInput.value = "shovel"
-		expect(validateName(donationInput)).toBe("shovel");
+		expect(validateDonation(donationInput)).toBe("shovel");
 	});
 
 	test("validateAmount validates correctly", () => {
 		const amountInput = global.document.querySelector("#amount-input")
 		amountInput.value = "1"
-		expect(validateName(amountInput)).toEqual("1");
+		expect(validateAmount(amountInput)).toEqual(1);
+	});
+
+	test("clearErrors clears DOM", () => {
+		let fakeErr = global.createElement("div")
+		// fakeErr.
+		const nonExistantErrs = global.document.querySelector("#amount-input")
+		amountInput.value = "1"
+		expect(validateAmount(amountInput)).toEqual(1);
+	});
+
+	test("displayError displays Error correctly", () => {
+		const amountInput = global.document.querySelector("#amount-input")
+		amountInput.value = "1"
+		expect(validateAmount(amountInput)).toEqual(1);
 	});
 	
 })
@@ -69,10 +83,10 @@ describe("Integration Tests", () => {
 	test("buildObject returns object correctly", () => {
 		init()
 		global.document.querySelector("#name-input").value = "tim";
-        global.document.querySelector("#email-input").value = "j@joe.com";
-        global.document.querySelector("#donation-input").value = "shovel";
-        global.document.querySelector("#amount-input").value = 1;
-        global.document.querySelector("#comment-input").value = "test";
+		global.document.querySelector("#email-input").value = "j@joe.com";
+		global.document.querySelector("#donation-input").value = "shovel";
+		global.document.querySelector("#amount-input").value = 1;
+		global.document.querySelector("#comment-input").value = "test";
 		
 		expect(buildObject()).toEqual({name:"tim", email:"j@joe.com", donation:"shovel", amount:1, comment:"test"});
 	});
