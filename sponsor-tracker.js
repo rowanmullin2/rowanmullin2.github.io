@@ -137,3 +137,18 @@ function handleSponsorFormSubmit(event) {
 
 // This line adds an event listener so the handleSponsorFormSubmit function runs when the form is submitted
 sponsorForm.addEventListener("submit", handleSponsorFormSubmit);
+
+// This line checks whether the special 'module' object exists and has an 'exports' property, which means the code is running in a Node or Jest environment rather than just in the browser
+if (typeof module !== "undefined" && module.exports) {
+	// This line exports selected values so that Jest tests can import and use these functions and the temporary data array
+	module.exports = {
+		// This line exposes the sponsorEntries array so integration tests can inspect how form submissions change temporary storage
+		sponsorEntries: sponsorEntries,
+		// This line exposes the createSponsorEntry function so unit tests can verify the object it builds
+		createSponsorEntry: createSponsorEntry,
+		// This line exposes the validateSponsorData function so unit tests can verify its validation rules
+		validateSponsorData: validateSponsorData,
+		// This line exposes the handleSponsorFormSubmit function so integration tests can simulate submitting the form with Jest
+		handleSponsorFormSubmit: handleSponsorFormSubmit,
+	};
+}
