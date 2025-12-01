@@ -1,6 +1,5 @@
-// This line sets up a minimal HTML structure in the Jest DOM so sponsor-tracker.js can find the form and feedback elements when it runs
-document.body.innerHTML = `
-	<form id="sponsor-form">
+const { JSDOM } = require("jsdom");
+const dom = new JSDOM(`<form id="sponsor-form">
 		<input type="text" id="sponsor-brand">
 		<input type="text" id="sponsor-name">
 		<input type="email" id="sponsor-email">
@@ -8,7 +7,9 @@ document.body.innerHTML = `
 		<input type="text" id="sponsor-event">
 	</form>
 	<div id="sponsor-feedback"></div>
-`;
+`);
+global.document = dom.window.document;
+
 
 // This line imports the temporary data array and functions we want to test from the sponsor-tracker module using Node's require function
 const {
