@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="4" failures="2" errors="0" time="3.558">
+  <testsuite name="Unit Tests" errors="0" failures="2" skipped="0" timestamp="2025-12-01T05:13:45" time="3.342" tests="4">
+    <testcase classname="Unit Tests is valid form returns true" name="Unit Tests is valid form returns true" time="0.179">
+    </testcase>
+    <testcase classname="Unit Tests is valid form returns false when 1 input is blank" name="Unit Tests is valid form returns false when 1 input is blank" time="0.115">
+    </testcase>
+    <testcase classname="Unit Tests is valid form returns false when email input is invalid" name="Unit Tests is valid form returns false when email input is invalid" time="0.059">
+      <failure>TypeError: Cannot read properties of undefined (reading &apos;insertBefore&apos;)
+    at insertBefore (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\events.js:11:26)
+    at showError (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\events.js:81:9)
+    at Array.forEach (&lt;anonymous&gt;)
+    at forEach (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\events.js:80:10)
+    at Object.isValidForm (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\events.test.js:46:16)
+    at Promise.finally.completed (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusTest (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:947:3)
+    at C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-runner\build\index.js:275:16)
+    at runTest (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-runner\build\index.js:343:7)</failure>
+    </testcase>
+    <testcase classname="Unit Tests is valid form returns false when role select blank" name="Unit Tests is valid form returns false when role select blank" time="0.03">
+      <failure>TypeError: Cannot read properties of undefined (reading &apos;insertBefore&apos;)
+    at insertBefore (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\events.js:11:26)
+    at showError (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\events.js:81:9)
+    at Array.forEach (&lt;anonymous&gt;)
+    at forEach (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\events.js:80:10)
+    at Object.isValidForm (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\events.test.js:51:16)
+    at Promise.finally.completed (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusTest (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:947:3)
+    at C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-runner\build\index.js:275:16)
+    at runTest (C:\Front_End_Development\Assignment-7\rowanmullin2.github.io\node_modules\jest-runner\build\index.js:343:7)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
