@@ -1,0 +1,99 @@
+/* Reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* styles */
+body {
+  font-family: comic sans;
+  line-height: 2.0;
+  background-color: #111142; /* primary */
+  color: #979799; /* secondary */
+  padding: 20px;
+}
+
+/* Headings */
+h1, h2 {
+  color: #C96DE5; /* tertiary */
+  margin-bottom: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form container */
+section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  box-shadow: 0 4px 8px #111142;
+}
+
+/* Form fields */
+.form-field {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #C96DE5;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #fff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(26, 50, 67, 0.4);
+}
+
+/* Button */
+button {
+  background-color: #111142;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.5s ease;
+}
+
+button:hover {
+  background-color: #2b2b7a; /* light hover */
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #111142;
+}
+
+/* Embedded sections (object/iframe) */
+object, iframe {
+  border: 1px solid #111142;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+/* Error messages for validation */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
