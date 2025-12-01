@@ -28,7 +28,7 @@ beforeEach(() => {
         </html>`)
         global.document = dom.window.document
 })
-const {storeInput, formStorage, isValidForm, init} = require("./events.js");
+const {storeInput, formStorage, isValidForm, init} = require("./section-3.js");
 
 describe("Unit Tests", () => {
     test("is valid form returns true", () => {

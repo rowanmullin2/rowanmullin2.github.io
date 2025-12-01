@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="20" failures="2" errors="0" time="2.149">
+  <testsuite name="createSponsorEntry" errors="0" failures="0" skipped="0" timestamp="2025-12-01T13:30:25" time="1.325" tests="9">
+    <testcase classname="createSponsorEntry returns an object with the supplied field values" name="createSponsorEntry returns an object with the supplied field values" time="0.006">
+    </testcase>
+    <testcase classname="validateSponsorData returns no errors for a completely valid sponsor" name="validateSponsorData returns no errors for a completely valid sponsor" time="0.006">
+    </testcase>
+    <testcase classname="validateSponsorData returns an error when brand is empty" name="validateSponsorData returns an error when brand is empty" time="0.001">
+    </testcase>
+    <testcase classname="validateSponsorData returns an error when contact name is empty" name="validateSponsorData returns an error when contact name is empty" time="0.001">
+    </testcase>
+    <testcase classname="validateSponsorData returns an error when email is empty" name="validateSponsorData returns an error when email is empty" time="0.001">
+    </testcase>
+    <testcase classname="validateSponsorData returns an error when email does not contain @" name="validateSponsorData returns an error when email does not contain @" time="0">
+    </testcase>
+    <testcase classname="validateSponsorData returns an error when event field is empty" name="validateSponsorData returns an error when event field is empty" time="0.001">
+    </testcase>
+    <testcase classname="integration: sponsor form submission submitting valid form adds sponsor to temporary storage" name="integration: sponsor form submission submitting valid form adds sponsor to temporary storage" time="0.02">
+    </testcase>
+    <testcase classname="integration: sponsor form submission submitting form with missing email shows error and does not add sponsor" name="integration: sponsor form submission submitting form with missing email shows error and does not add sponsor" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Unit Tests" errors="0" failures="0" skipped="0" timestamp="2025-12-01T13:30:25" time="1.438" tests="7">
+    <testcase classname="Unit Tests validateName validates correctly" name="Unit Tests validateName validates correctly" time="0.108">
+    </testcase>
+    <testcase classname="Unit Tests validateEmail validates correctly" name="Unit Tests validateEmail validates correctly" time="0.017">
+    </testcase>
+    <testcase classname="Unit Tests validateDonation validates correctly" name="Unit Tests validateDonation validates correctly" time="0.028">
+    </testcase>
+    <testcase classname="Unit Tests validateAmount validates correctly" name="Unit Tests validateAmount validates correctly" time="0.013">
+    </testcase>
+    <testcase classname="Unit Tests clearErrors clears DOM" name="Unit Tests clearErrors clears DOM" time="0.021">
+    </testcase>
+    <testcase classname="Unit Tests displayError displays Error correctly" name="Unit Tests displayError displays Error correctly" time="0.017">
+    </testcase>
+    <testcase classname="Integration Tests buildObject returns object correctly" name="Integration Tests buildObject returns object correctly" time="0.027">
+    </testcase>
+  </testsuite>
+  <testsuite name="Unit Tests" errors="0" failures="2" skipped="0" timestamp="2025-12-01T13:30:25" time="1.451" tests="4">
+    <testcase classname="Unit Tests is valid form returns true" name="Unit Tests is valid form returns true" time="0.128">
+    </testcase>
+    <testcase classname="Unit Tests is valid form returns false when 1 input is blank" name="Unit Tests is valid form returns false when 1 input is blank" time="0.046">
+    </testcase>
+    <testcase classname="Unit Tests is valid form returns false when email input is invalid" name="Unit Tests is valid form returns false when email input is invalid" time="0.02">
+      <failure>TypeError: Cannot read properties of undefined (reading &apos;insertBefore&apos;)
+    at insertBefore (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\events.js:11:26)
+    at showError (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\events.js:81:9)
+    at Array.forEach (&lt;anonymous&gt;)
+    at forEach (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\events.js:80:10)
+    at Object.isValidForm (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\events.test.js:46:16)
+    at Promise.finally.completed (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusTest (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:947:3)
+    at C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-runner\build\testWorker.js:275:16)
+    at runTest (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-runner\build\testWorker.js:343:7)
+    at Object.worker (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-runner\build\testWorker.js:497:12)</failure>
+    </testcase>
+    <testcase classname="Unit Tests is valid form returns false when role select blank" name="Unit Tests is valid form returns false when role select blank" time="0.014">
+      <failure>TypeError: Cannot read properties of undefined (reading &apos;insertBefore&apos;)
+    at insertBefore (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\events.js:11:26)
+    at showError (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\events.js:81:9)
+    at Array.forEach (&lt;anonymous&gt;)
+    at forEach (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\events.js:80:10)
+    at Object.isValidForm (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\events.test.js:51:16)
+    at Promise.finally.completed (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusTest (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:947:3)
+    at C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-runner\build\testWorker.js:275:16)
+    at runTest (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-runner\build\testWorker.js:343:7)
+    at Object.worker (C:\Users\rowan\OneDrive\Desktop\class work\term 2\comp-2230-frontend\assignments\mullin-rowan-assignment-7\node_modules\jest-runner\build\testWorker.js:497:12)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
