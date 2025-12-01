@@ -1,36 +1,9 @@
 const { JSDOM } = require("jsdom");
+const fs = require("fs");
 
 beforeEach(() => {
-	const dom = new JSDOM(`
-		<!DOCTYPE html>
-		<html lang="en">
-			<div id="navbar-container"></div>
-			<form>
-				<div id="name-input-container">
-					<label for="name-input">Name:</label>
-					<input type="text" id="name-input" placeholder="eg. John Smith">
-				</div>
-				<div id="email-input-container">
-					<label for="email-input">Email:</label>
-					<input type="text" id="email-input" placeholder="eg. JSmith@example.com">
-				</div>
-				<div id="donation-input-container">
-					<label for="donation-input">Donation Item:</label>
-					<input type="text" id="donation-input" placeholder="eg. Shovel">
-				</div>
-				<div id="amount-input-container">
-					<label for="amount-input">Amount:</label>
-					<input type="number" id="amount-input" placeholder="eg. 5">
-				</div>
-				<div id="comments-input-container">
-					<label for="comment-input">Comments:</label>
-					<input type="text" id="comment-input" placeholder="eg. Enjoy the shovels!">
-				</div>
-				<button id="submit-button" type="button">Submit</button>
-			</form>
-			<div id="footer-container"></div>
-		</html>
-		`);
+	let html = fs.readFileSync("./section-5.html", "utf8");
+	let dom = new JSDOM(html);
     global.document = dom.window.document;
 }) 
 

@@ -1,12 +1,9 @@
 /**
  * @jest-environment jsdom
  */
+const { JSDOM } = require("jsdom");
 const fs = require("fs");
-const path = require("path");
 const { handleFormSubmit, validateVolunteer, processVolunteer } = require("./section-2.js");
-
-// Load HTML into JSDOM
-const html = fs.readFileSync(path.resolve(__dirname, "section-2.html"), "utf8");
 
 describe("Volunteer Tracker Form – Integration Tests", () => {
   let form;
@@ -16,17 +13,15 @@ describe("Volunteer Tracker Form – Integration Tests", () => {
   let ratingInput;
 
   beforeEach(() => {
-    document.documentElement.innerHTML = html.toString();
+    let html = fs.readFileSync("./section-5.html", "utf8");
+    let dom = new JSDOM(html);
+	global.document = dom.window.document;
 
-    form = document.getElementById("volunteer-form");
-    charityInput = document.getElementById("charity");
-    hoursInput = document.getElementById("hours");
-    dateInput = document.getElementById("date");
-    ratingInput = document.getElementById("rating");
-
-    // Mock alert and console.log
-    global.alert = jest.fn();
-    global.console.log = jest.fn();
+	form = global.document.getElementById("volunteer-form");
+    charityInput = global.document.getElementById("charity");
+    hoursInput = global.document.getElementById("hours");
+    dateInput = global.document.getElementById("date");
+    ratingInput = global.document.getElementById("rating");
   });
 
   test("Submitting valid form logs correct volunteer data", () => {
@@ -36,7 +31,6 @@ describe("Volunteer Tracker Form – Integration Tests", () => {
     ratingInput.value = "5";
 
     // Call the handler directly
-    handleFormSubmit({ preventDefault: () => {} });
 
     expect(global.console.log).toHaveBeenCalledWith(
       "Volunteer entry recorded:",
