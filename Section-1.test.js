@@ -4,9 +4,7 @@
 
 const fs = require("fs");
 const path = require("path");
-
-import { validateDonation, processDonation } from "../section-1(2).js";
-
+const { validateDonation, processDonation } = require("../section-1(2).js")
 // Load the HTML file into JSDOM
 const html = fs.realFileSync(path.resolve(__dirname, "../index.html"), "utf8");
  // Integration Tests
