@@ -4,7 +4,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { validateDonation, processDonation } = require("../section-1(2).js")
+const { validateDonation, processDonation } = require("../section-1.js");
 // Load the HTML file into JSDOM
 const html = fs.realFileSync(path.resolve(__dirname, "../index.html"), "utf8");
  // Integration Tests
@@ -20,7 +20,7 @@ describe("Donation Tracker Form Integration Tests", () => {
     document.documentElement.innerHTML = html.toString();
 
     // Import the JS file that attaches event listeners
-    require("../section-1(2).js");
+    require("../section-1.js");
 
     // Get form and inputs
     form = document.getElementById("donation-form");
