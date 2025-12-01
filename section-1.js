@@ -31,45 +31,46 @@ function processDonation({ charity, amount, date, comment }) {
   };
 }
 
-// Export functions for Jest (Node) but avoid errors in the browser
-if (typeof window === "undefined") {
-    module.exports = {validateDonation, processDonation};
+// Export functions for Jest (Node)
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { validateDonation, processDonation };
 }
 
-// DOM logic: runs in the browser when the page is loaded
-document.addEventListener("DOMContentLoaded", () => {
+// Attach DOM logic immediately if document exists
+if (typeof document !== "undefined") {
   const form = document.getElementById("donation-form");
-  if (!form) return;
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent page reload
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent page reload
 
-    // Collect raw form values
-    const donationInput = {
-      charity: document.getElementById("charity").value,
-      amount: document.getElementById("amount").value,
-      date: document.getElementById("date").value,
-      comment: document.getElementById("comment").value,
-    };
+      // Collect raw form values
+      const donationInput = {
+        charity: document.getElementById("charity").value,
+        amount: document.getElementById("amount").value,
+        date: document.getElementById("date").value,
+        comment: document.getElementById("comment").value,
+      };
 
-    // Run validation
-    const errors = validateDonation(donationInput);
+      // Run validation
+      const errors = validateDonation(donationInput);
 
-    if (errors.length > 0) {
-      alert(errors.join("\n"));
-      return;
-    }
+      if (errors.length > 0) {
+        alert(errors.join("\n"));
+        return;
+      }
 
-    // Build the final donation object
-    const donationData = processDonation(donationInput);
+      // Build the final donation object
+      const donationData = processDonation(donationInput);
 
-    // Log the data (this is what your test checks)
-    console.log("Donation recorded:", donationData);
+      // Log the data (this is what your test checks)
+      console.log("Donation recorded:", donationData);
 
-    // Give user feedback
-    alert("Donation successfully added!");
+      // Give user feedback
+      alert("Donation successfully added!");
 
-    // Reset the form
-    form.reset();
-  });
-});
+      // Reset the form
+      form.reset();
+    });
+  }
+}
