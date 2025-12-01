@@ -63,17 +63,18 @@ describe("Unit Tests", () => {
 	});
 
 	test("clearErrors clears DOM", () => {
-		let fakeErr = global.createElement("div")
-		// fakeErr.
-		const nonExistantErrs = global.document.querySelector("#amount-input")
-		amountInput.value = "1"
-		expect(validateAmount(amountInput)).toEqual(1);
+		const nameInput = global.document.querySelector("#name-input")
+		validateName(nameInput)
+		clearErrors()
+		const nonExistentErr = global.document.querySelector(".err-msg")
+		expect(nonExistentErr).toEqual(null);
 	});
 
 	test("displayError displays Error correctly", () => {
-		const amountInput = global.document.querySelector("#amount-input")
-		amountInput.value = "1"
-		expect(validateAmount(amountInput)).toEqual(1);
+		const nameInput = global.document.querySelector("#name-input")
+		validateName(nameInput)
+		const err = global.document.querySelector(".err-msg")
+		expect(err.innerHTML).toEqual("Name cannot be blank / empty.");
 	});
 	
 })
