@@ -32,8 +32,8 @@ function processDonation({ charity, amount, date, comment }) {
 }
 
 // Export functions for Jest (Node) but avoid errors in the browser
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { validateDonation, processDonation };
+if (typeof window === "undefined") {
+    module.exports = {validateDonation, processDonation};
 }
 
 // DOM logic: runs in the browser when the page is loaded
