@@ -5,7 +5,7 @@
  "main": "script.js",
  "scripts": {
   "test": "jest"
- }
+ },
  "homepage": "https://github.com/rowanmullin2/rowanmullin2.github.io#readme",
  "devDependencies": {
   "jest": "^30.2.0",
