@@ -6,6 +6,17 @@
 }
 
 body {
-	text-font: var(--default-font);
+	width: 80%;
+	margin-left: 10%;
+	font-family: var(--default-font);
 	background-color: var(--color-secondary);
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+.err-msg {
+	color: red
 }
