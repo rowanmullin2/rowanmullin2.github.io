@@ -4,7 +4,7 @@ const fs = require("fs");
 beforeEach(() => {
 	let html = fs.readFileSync("./section-5.html", "utf8");
 	let dom = new JSDOM(html);
-    global.document = dom.window.document;
+	global.document = dom.window.document;
 }) 
 
 const { validateName, validateEmail, validateDonation, validateAmount, clearErrors, displayError, buildObject, init } = require("./section-5.js");

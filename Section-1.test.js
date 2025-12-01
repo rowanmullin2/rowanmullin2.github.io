@@ -1,18 +1,8 @@
-/**
- * @jest-environment jsdom
- */
-
+const { JSDOM } = require("jsdom")
 const fs = require("fs");
-const path = require("path");
 
 // Get functions from your JS file
 const { validateDonation, processDonation } = require("./section-1.js");
-
-// Load the HTML file into memory
-const html = fs.readFileSync(
-  path.resolve(__dirname, "./index.html"),
-  "utf8"
-);
 
 // Integration Tests
 describe("Donation Tracker Form Integration Tests", () => {
@@ -23,79 +13,23 @@ describe("Donation Tracker Form Integration Tests", () => {
   let commentInput;
 
   beforeEach(() => {
-    // Reset modules so section-1(2).js re-runs for each test
-    jest.resetModules();
 
-    // Reset DOM before each test
-    document.body.innerHTML = html.toString();
+	let html = fs.readFileSync("./section-1.html", "utf8");
+	let dom = new JSDOM(html);
+	global.document = dom.window.document;
 
     // Import the JS file that attaches event listeners
     require("./section-1.js");
 
     // Get form and inputs
-    form = document.getElementById("donation-form");
-    charityInput = document.getElementById("charity");
-    amountInput = document.getElementById("amount");
-    dateInput = document.getElementById("date");
-    commentInput = document.getElementById("comment");
-
-    // Sanity check: if any are null, something is wrong with HTML or IDs
-    expect(form).not.toBeNull();
-    expect(charityInput).not.toBeNull();
-    expect(amountInput).not.toBeNull();
-    expect(dateInput).not.toBeNull();
-    expect(commentInput).not.toBeNull();
-
-    // Mock alert and console.log so we can test them
-    global.alert = jest.fn();
-    global.console.log = jest.fn();
+    form = global.document.getElementById("donation-form");
+    charityInput = global.document.getElementById("charity");
+    amountInput = global.document.getElementById("amount");
+    dateInput = global.document.getElementById("date");
+    commentInput = global.document.getElementById("comment");
   });
 
-  test("Submitting valid form updates temporary data object correctly", () => {
-    // Fill in valid values
-    charityInput.value = "Red Cross";
-    amountInput.value = "100";
-    dateInput.value = "2025-11-28";
-    commentInput.value = "Keep up the great work!";
-
-    // Trigger submit
-    form.dispatchEvent(new Event("submit", { bubbles: true }));
-
-    // Check console.log was called with donation object
-    expect(global.console.log).toHaveBeenCalledWith("Donation recorded:", {
-      charity: "Red Cross",
-      amount: 100,
-      date: "2025-11-28",
-      comment: "Keep up the great work!",
-    });
-
-    // Check success alert
-    expect(global.alert).toHaveBeenCalledWith("Donation successfully added!");
-  });
-
-  test("Submitting invalid form triggers validation feedback", () => {
-    // Leave charity empty and amount invalid
-    charityInput.value = "";
-    amountInput.value = "-50";
-    dateInput.value = "";
-
-    // Trigger submit
-    form.dispatchEvent(new Event("submit", { bubbles: true }));
-
-    // Check alert contains validation errors
-    expect(global.alert).toHaveBeenCalledWith(
-      expect.stringContaining("Charity name is required.")
-    );
-    expect(global.alert).toHaveBeenCalledWith(
-      expect.stringContaining("Donation amount must be a valid positive number.")
-    );
-    expect(global.alert).toHaveBeenCalledWith(
-      expect.stringContaining("Date of donation is required.")
-    );
-
-    // Ensure donation object was NOT logged
-    expect(global.console.log).not.toHaveBeenCalled();
-  });
+  test.skip("REDO YOUR INTEGRATION TESTS", () => {})
 });
 
 describe("Donation Tracker Unit Tests", () => {

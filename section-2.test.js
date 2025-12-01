@@ -1,6 +1,3 @@
-/**
- * @jest-environment jsdom
- */
 const { JSDOM } = require("jsdom");
 const fs = require("fs");
 const { handleFormSubmit, validateVolunteer, processVolunteer } = require("./section-2.js");
