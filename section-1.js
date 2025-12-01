@@ -1,9 +1,9 @@
 
 document.addEventListener("DOMContentLoaded"), () => {
-  const form = document.getElementById("donation-form");
+const form = document.getElementById("donation-form");
   // Validates a donation input object and returns an array of error messages
-function validateDonation({ charity, amount, date }) {
-  const errors = [];
+  function validateDonation({ charity, amount, date }) {
+    const errors = [];
 
   // Check charity name
   if (!charity || charity.trim() === "") {
@@ -24,24 +24,24 @@ function validateDonation({ charity, amount, date }) {
   return errors;
 }
 
-// Cleans up and converts the raw input into the final donation object
-function processDonation({ charity, amount, date, comment }) {
-  return {
-    charity: charity.trim(),
-    amount: Number(amount),
-    date,
-    comment: comment.trim(),
-  };
-}
+  // Cleans up and converts the raw input into the final donation object
+  function processDonation({ charity, amount, date, comment }) {
+    return {
+      charity: charity.trim(),
+      amount: Number(amount),
+      date,
+      comment: comment.trim(),
+    };
+  }
 
-// Export functions for Jest (Node)
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { validateDonation, processDonation };
-}
+  // Export functions for Jest (Node)
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = { validateDonation, processDonation };
+  }
 
-// Attach DOM logic immediately if document exists
-if (typeof document !== "undefined") {
-  const form = document.getElementById("donation-form");
+  // Attach DOM logic immediately if document exists
+  if (typeof document !== "undefined") {
+    const form = document.getElementById("donation-form");
 
   if (form) {
     form.addEventListener("submit", (event) => {
