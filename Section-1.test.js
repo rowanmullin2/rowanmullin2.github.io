@@ -2,12 +2,13 @@
  * @jest-environment jsdom
  */
 
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
+
 import { validateDonation, processDonation } from "../section-1(2).js";
 
 // Load the HTML file into JSDOM
-const html = fs.required ("fs")(path.resolve(__dirname, "../index.html"), "utf8");
+const html = fs.realFileSync(path.resolve(__dirname, "../index.html"), "utf8");
  // Integration Tests
 describe("Donation Tracker Form Integration Tests", () => {
   let form;
@@ -21,7 +22,7 @@ describe("Donation Tracker Form Integration Tests", () => {
     document.documentElement.innerHTML = html.toString();
 
     // Import the JS file that attaches event listeners
-    require("../section-1 (2).js");
+    require("../section-1(2).js");
 
     // Get form and inputs
     form = document.getElementById("donation-form");
