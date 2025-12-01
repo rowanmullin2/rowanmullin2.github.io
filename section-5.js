@@ -71,8 +71,10 @@ function buildObject() {
     }
     if (document.querySelector(".err-msg")) {
         console.log("invalid input")
+        return false
     } else {
         console.log(new_object);
+        return new_object
     }
 }
 
