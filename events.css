@@ -1,0 +1,70 @@
+:root {
+    --default-font: 'Comic Sans MS', sans-serif;
+    --color-primary: #111142;
+    --color-secondary: #979799;
+    --color-tertiary: #C96DE5;
+}
+
+body {
+    font-family: var(--default-font);
+    background-color: var(--color-secondary);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.event-form {
+    height: fit-content;
+    width: 150vh;
+    margin-top: 60px;
+    margin-left: 30vh;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+input,
+select {
+    display: block;
+    width: 75vh;
+    height: 40px;
+    margin-top: 10px;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+select:hover,
+input:hover {
+    border: 1px solid var(--color-primary);
+}
+
+.error {
+    color: #f13737;
+}
+
+button {
+    background-color: var(--color-tertiary);
+    margin-top: 20px;
+    height: 30px;
+    width: 60px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    /* border: 1px solid var(--color-tertiary); */
+}
+
+button:hover {
+    border: 2px solid #c55bc0c2;
+    font-weight: bolder;
+}
