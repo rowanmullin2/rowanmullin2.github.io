@@ -1,51 +1,75 @@
+// Validates a donation input object and returns an array of error messages
+function validateDonation({ charity, amount, date }) {
+  const errors = [];
+
+  // Check charity name
+  if (!charity || charity.trim() === "") {
+    errors.push("Charity name is required.");
+  }
+
+  // Check amount (must be a positive number)
+  const numericAmount = Number(amount);
+  if (isNaN(numericAmount) || numericAmount <= 0) {
+    errors.push("Donation amount must be a valid positive number.");
+  }
+
+  // Check date
+  if (!date) {
+    errors.push("Date of donation is required.");
+  }
+
+  return errors;
+}
+
+// Cleans up and converts the raw input into the final donation object
+function processDonation({ charity, amount, date, comment }) {
+  return {
+    charity: charity.trim(),
+    amount: Number(amount),
+    date,
+    comment: comment.trim(),
+  };
+}
+
+// Export functions for Jest (Node) but avoid errors in the browser
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { validateDonation, processDonation };
+}
+
+// DOM logic: runs in the browser when the page is loaded
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("donation-form");
+  if (!form) return;
 
-  form.addEventListener("submit", function (event) {
+  form.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent page reload
 
-    // Collect form values
-    const charity = document.getElementById("charity").value.trim();
-    const amount = parseFloat(document.getElementById("amount").value);
-    const date = document.getElementById("date").value;
-    const comment = document.getElementById("comment").value.trim();
+    // Collect raw form values
+    const donationInput = {
+      charity: document.getElementById("charity").value,
+      amount: document.getElementById("amount").value,
+      date: document.getElementById("date").value,
+      comment: document.getElementById("comment").value,
+    };
 
-    // Validation
-    let errors = [];
+    // Run validation
+    const errors = validateDonation(donationInput);
 
-    if (!charity) {
-      errors.push("Charity name is required.");
-    }
-
-    if (isNaN(amount) || amount <= 0) {
-      errors.push("Donation amount must be a valid positive number.");
-    }
-
-    if (!date) {
-      errors.push("Date of donation is required.");
-    }
-    // Show errors or proceed
     if (errors.length > 0) {
       alert(errors.join("\n"));
       return;
     }
 
-    // Temporary data object
-    const donationData = {
-      charity,
-      amount,
-      date,
-      comment,
-    };
+    // Build the final donation object
+    const donationData = processDonation(donationInput);
 
-    // For now, just log the data (you can later push to an array or API)
+    // Log the data (this is what your test checks)
     console.log("Donation recorded:", donationData);
 
-    // Optional: give user feedback
+    // Give user feedback
     alert("Donation successfully added!");
 
-    // Reset form
+    // Reset the form
     form.reset();
   });
 });
-
