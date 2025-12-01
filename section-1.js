@@ -1,4 +1,7 @@
-// Validates a donation input object and returns an array of error messages
+
+document.addEventListener("DOMContentLoaded"), () => {
+  const form = document.getElementById("donation-form");
+  // Validates a donation input object and returns an array of error messages
 function validateDonation({ charity, amount, date }) {
   const errors = [];
 
@@ -72,5 +75,5 @@ if (typeof document !== "undefined") {
       // Reset the form
       form.reset();
     });
-  }
+  }}
 }
