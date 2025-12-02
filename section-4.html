@@ -12,32 +12,15 @@
 		<title>PiXELL River Financial - Sponsor Tracker</title>
 		<!-- This line links the external CSS file that styles the sponsor tracker page -->
 		<link rel="stylesheet" href="section-4.css">
+		<!-- Shared Navbar-->
+		<script src="load-page-components.js" defer></script>
 	<!-- This line closes the head section -->
 	</head>
 	<!-- This line opens the body section that contains all visible content -->
 	<body>
 		<!-- This line starts the header at the top of the page -->
-		<header>
-			<!-- This line displays the main heading for the site -->
-			<h1>PiXELL River Financial - Community Support</h1>
-			<!-- This line opens the navigation bar used to move between components -->
-			<nav>
-				<!-- This line creates an unordered list to hold navigation links -->
-				<ul>
-					<!-- This line defines a navigation item linking to the donations page -->
-					<li><a href="donation-tracker.html">Donations</a></li>
-					<!-- This line defines a navigation item linking to the volunteer hours page -->
-					<li><a href="volunteer-hours-tracker.html">Volunteer Hours</a></li>
-					<!-- This line defines a navigation item linking to the event signup page -->
-					<li><a href="event-signup.html">Events</a></li>
-					<!-- This line defines a navigation item linking to the sponsor tracker page -->
-					<li><a href="sponsor-tracker.html">Sponsors</a></li>
-				<!-- This line closes the unordered list of navigation links -->
-				</ul>
-			<!-- This line closes the nav element -->
-			</nav>
-		<!-- This line closes the header element -->
-		</header>
+		<div id="header-container"></div>
+		<div id="nav-container"></div>
 
 		<!-- This line opens the main element that holds the primary content -->
 		<main>
@@ -119,22 +102,8 @@
 		</footer>
 
 		<!-- This line links the external JavaScript file that adds functionality to the sponsor form -->
-		<script src="sponsor-tracker.js"></script>
-	<!-- This line closes the body element -->
-	</body>
-<!-- This line closes the root html element -->
-</html>
-
-
-		<!-- This line opens the footer section at the bottom of the page -->
-		<footer>
-			<!-- This line displays a simple copyright or ownership statement -->
-			<p>&copy; 2025 PiXELL River Financial - Community Support Tracker</p>
-		<!-- This line closes the footer section -->
-		</footer>
-		<!-- This line links the external JavaScript file that adds functionality to the sponsor form -->
 		<script src="section-4.js"></script>
-	<!-- This line closes the body element that contains all visible content -->
+	<!-- This line closes the body element -->
 	</body>
 <!-- This line closes the root html element -->
 </html>
