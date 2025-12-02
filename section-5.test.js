@@ -5,9 +5,10 @@ beforeEach(() => {
 	let html = fs.readFileSync("./section-5.html", "utf8");
 	let dom = new JSDOM(html);
 	global.document = dom.window.document;
+	init()
 }) 
 
-const { validateName, validateEmail, validateDonation, validateAmount, clearErrors, displayError, buildObject, init } = require("./section-5.js");
+const { validateName, validateEmail, validateDonation, validateAmount, clearErrors, buildObject, init } = require("./section-5.js");
 
 describe("Unit Tests", () => {
 
@@ -55,7 +56,6 @@ describe("Unit Tests", () => {
 describe("Integration Tests", () => {
 
 	test("buildObject returns object correctly", () => {
-		init()
 		global.document.querySelector("#name-input").value = "tim";
 		global.document.querySelector("#email-input").value = "j@joe.com";
 		global.document.querySelector("#donation-input").value = "shovel";
