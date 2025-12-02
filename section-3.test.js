@@ -1,54 +1,57 @@
+let eventNameInput;
+let representativeNameInput;
+let representativeEmailInput;
+let roleSelected;
+
 const { JSDOM } = require("jsdom");
+const fs = require("fs");
 
 beforeEach(() => {
-    const dom = new JSDOM(`
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="events.css">
-            <title>Event Signup Page</title>
-        </head>
-        <body>
-            <form action="" method="post" class="event-form">
-                <label for="event-name" >Event Name: <input type="text" id="event-name" placeholder="Event's name"></label>
-                <label for="representative-name" >Company Representative's Name: <input type="text" id="representative-name" placeholder="Company's Representative Name"></label>
-                <label for="representative-email" >Representative's Email: <input type="email" id="representative-email" placeholder="Representative's email address"></label>
-                <label for="company-role">Role Selection:<select name="role-selection" id="company-role" >
-                    <option value="" disabled selected>Choose role...</option>
-                    <option value="sponsor">Sponsor</option>
-                    <option value="participant">Participant</option>
-                    <option value="organizer">Organizer</option>
-                </select></label>
-                <button type="button" id="submit">Submit</button>
-            </form>
-            <script src="events.js"></script>
-        </body>
-        </html>`)
-        global.document = dom.window.document
+    let html = fs.readFileSync("./section-3.html", "utf8");
+	let dom = new JSDOM(html);
+	global.document = dom.window.document;
+
+    eventNameInput = global.document.querySelector("#event-name");
+    representativeNameInput = global.document.querySelector("#representative-name");
+    representativeEmailInput = global.document.querySelector("#representative-email");
+    roleSelected = global.document.querySelector("#company-role");
+    
+    init()
 })
+
 const {storeInput, formStorage, isValidForm, init} = require("./section-3.js");
 
 describe("Unit Tests", () => {
     test("is valid form returns true", () => {
-        init()
-        expect(isValidForm("t", "to", "d@gmail.com", "Sponsor")).toBe(true);
+        eventNameInput.value = "t"
+        representativeNameInput.value = "to"
+        representativeEmailInput.value = "d@gmail.com"
+        roleSelected.value = "sponsor"
+        expect(isValidForm()).toBe(true);
     });
     
-    test("is valid form returns false when 1 input is blank", () => {
-        init()
-        expect(isValidForm("", "to", "d@gmail.com", "Sponsor")).toBe(false);
+    test("is valid form returns false when name input is blank", () => {
+        eventNameInput.value = ""
+        representativeNameInput.value = "to"
+        representativeEmailInput.value = "d@gmail.com"
+        roleSelected.value = "sponsor"
+        expect(isValidForm()).toBe(false);
     })
 
     test("is valid form returns false when email input is invalid", () => {
-        init()
-        expect(isValidForm("t", "to", "", "Sponsor")).toBe(false);
+        eventNameInput.value = "t"
+        representativeNameInput.value = "to"
+        representativeEmailInput.value = ""
+        roleSelected.value = "sponsor"
+        expect(isValidForm()).toBe(false);
     })
 
     test("is valid form returns false when role select blank", () => {
-        init()
-        expect(isValidForm("t", "to", "d@gmail.com", "")).toBe(false);
+        eventNameInput.value = "t"
+        representativeNameInput.value = "to"
+        representativeEmailInput.value = "d@gmail.com"
+        roleSelected.value = ""
+        expect(isValidForm()).toBe(false);
     })
 })
 
