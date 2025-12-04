@@ -84,27 +84,22 @@ function isValidForm() {
     return valid
 }
 
-function storeFormData() {
-    sessionStorage.setItem("formData", JSON.stringify(formStorage));
-    console.log("storage ", sessionStorage.getItem("formData"))
+function saveFormData(formData) {
+    const formDataStore = JSON.parse(localStorage.getItem("formData")) || [];
+    formDataStore.push(formData);
+    localStorage.setItem("formData", JSON.stringify(formDataStore));
+
+    console.log(localStorage.getItem("formData"))
 }
 
-function getStoredFormData() {
-    return sessionStorage.getItem("formData");
-}
-
-function clearSessionStorage() {
-    sessionStorage.removeItem("formData")
-}
-
-const formStorage = [];
 function storeInput(eventName, repreName, repreEmail, repreRole) {
-    formStorage.push({
+    const formStorage ={
         eventName, 
         repreName, 
         repreEmail, 
-        repreRole});
+        repreRole};
         console.log(formStorage);
+        return formStorage
     }
 
 function init() {
@@ -118,12 +113,14 @@ function init() {
         e.preventDefault()
         let isValid = isValidForm(eventNameInput, representativeNameInput, representativeEmailInput, roleSelected)
         if (isValid === true) {
-            storeInput(
-            eventNameInput.value, 
-            representativeNameInput.value, 
-            representativeEmailInput.value, 
-            roleSelected.value);
+            clearSessionStorage()
+            
+            storeFormData()
+            let formData = getStoredFormData()
+    
+            saveFormData(formData)
         }
+
     })
     
 }
