@@ -89,6 +89,10 @@ function storeFormData() {
     console.log("storage ", sessionStorage.getItem("formData"))
 }
 
+function getStoredFormData() {
+    return sessionStorage.getItem("formData");
+}
+
 const formStorage = [];
 function storeInput(eventName, repreName, repreEmail, repreRole) {
     formStorage.push({
