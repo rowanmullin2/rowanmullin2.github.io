@@ -93,6 +93,10 @@ function getStoredFormData() {
     return sessionStorage.getItem("formData");
 }
 
+function clearSessionStorage() {
+    sessionStorage.removeItem("formData")
+}
+
 const formStorage = [];
 function storeInput(eventName, repreName, repreEmail, repreRole) {
     formStorage.push({
