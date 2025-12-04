@@ -85,9 +85,9 @@ function isValidForm() {
 }
 
 const formStorage = [];
-function storeInput(eveNameInput, repreName, repreEmail, repreRole) {
+function storeInput(eventName, repreName, repreEmail, repreRole) {
     formStorage.push({
-        eveNameInput, 
+        eventName, 
         repreName, 
         repreEmail, 
         repreRole});
