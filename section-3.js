@@ -85,6 +85,7 @@ function isValidForm() {
 }
 
 function saveFormData(formData) {
+
     const formDataStore = JSON.parse(localStorage.getItem("formData")) || [];
     formDataStore.push(formData);
     localStorage.setItem("formData", JSON.stringify(formDataStore));
@@ -99,7 +100,7 @@ function storeInput(eventName, repreName, repreEmail, repreRole) {
         repreEmail, 
         repreRole};
         console.log(formStorage);
-        return formStorage
+        saveFormData(formStorage)
     }
 
 function init() {
@@ -113,12 +114,12 @@ function init() {
         e.preventDefault()
         let isValid = isValidForm(eventNameInput, representativeNameInput, representativeEmailInput, roleSelected)
         if (isValid === true) {
-            clearSessionStorage()
-            
-            storeFormData()
-            let formData = getStoredFormData()
-    
-            saveFormData(formData)
+            let formData = storeInput(
+                eventNameInput.value,
+                representativeNameInput.value,
+                representativeEmailInput.value,
+                roleSelected.value
+            )
         }
 
     })
