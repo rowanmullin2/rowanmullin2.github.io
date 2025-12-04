@@ -84,6 +84,11 @@ function isValidForm() {
     return valid
 }
 
+function storeFormData() {
+    sessionStorage.setItem("formData", JSON.stringify(formStorage));
+    console.log("storage ", sessionStorage.getItem("formData"))
+}
+
 const formStorage = [];
 function storeInput(eventName, repreName, repreEmail, repreRole) {
     formStorage.push({
