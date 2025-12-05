@@ -2,7 +2,8 @@ const { JSDOM } = require("jsdom")
 const fs = require("fs");
 
 // Get functions from your JS file
-const { validateDonation, processDonation } = require("./section-1.js");
+const { validateDonation, processDonation, calculateTotal, deleteDonation,
+  saveDonations, loadDonations } = require("./section-1.js");
 
 // Integration Tests
 describe("Donation Tracker Form Integration Tests", () => {
@@ -99,4 +100,77 @@ describe("Donation Tracker Unit Tests", () => {
 
     expect(donation.comment).toBe(""); // empty string if no comment
   });
+});
+
+beforeEach(() => {
+  localStorage.clear();
+});
+
+test("calculateTotal returns correct sum", () => {
+  const donations = [
+    { amount: 10 },
+    { amount: 20 },
+    { amount: 5 }
+  ];
+
+  expect(calculateTotal(donations)).toBe(35);
+});
+
+test("deleteDonation removes the correct record", () => {
+  const donations = [
+    { id: 1, amount: 10 },
+    { id: 2, amount: 20 }
+  ];
+
+  saveDonations(donations);
+  deleteDonation(1);
+
+  const updated = loadDonations();
+  expect(updated.length).toBe(1);
+  expect(updated[0].id).toBe(2);
+});
+
+test("total updates after deletion", () => {
+  const donations = [
+    { id: 1, amount: 10 },
+    { id: 2, amount: 20 }
+  ];
+
+  saveDonations(donations);
+  deleteDonation(1);
+
+  const updated = loadDonations();
+  expect(calculateTotal(updated)).toBe(20);
+});
+
+beforeEach(() => {
+  document.body.innerHTML = fs.readFileSync(
+    path.resolve(__dirname, "index.html"),
+    "utf8"
+  );
+  localStorage.clear();
+});
+
+test("table updates after adding data to localStorage", () => {
+  saveDonations([
+    { id: 1, charity: "UNICEF", amount: 50, date: "2025-01-01", comment: "Nice" }
+  ]);
+
+  renderTable();
+
+  const rows = document.querySelectorAll("#donation-table tbody tr");
+  expect(rows.length).toBe(1);
+  expect(rows[0].children[0].textContent).toBe("UNICEF");
+});
+
+test("data persists and loads correctly into table", () => {
+  saveDonations([
+    { id: 1, charity: "Red Cross", amount: 100, date: "2025-02-01", comment: "Help" }
+  ]);
+
+  renderTable();
+
+  const rows = document.querySelectorAll("#donation-table tbody tr");
+  expect(rows.length).toBe(1);
+  expect(rows[0].children[1].textContent).toBe("100.00");
 });
