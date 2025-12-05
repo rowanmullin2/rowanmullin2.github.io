@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="3" failures="0" errors="0" time="1.256">
-  <testsuite name="Volunteer Tracker Form – Integration Tests" errors="0" failures="0" skipped="0" timestamp="2025-11-30T06:02:35" time="0.435" tests="2">
-    <testcase classname="Volunteer Tracker Form – Integration Tests Submitting valid form logs correct volunteer data" name="Volunteer Tracker Form – Integration Tests Submitting valid form logs correct volunteer data" time="0.038">
-    </testcase>
-    <testcase classname="Volunteer Tracker Form – Integration Tests Submitting invalid form triggers validation errors" name="Volunteer Tracker Form – Integration Tests Submitting invalid form triggers validation errors" time="0.019">
+<testsuites name="jest tests" tests="9" failures="0" errors="0" time="1.479">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-12-05T16:37:19" time="0.276" tests="1">
+    <testcase classname=" dummy test" name=" dummy test" time="0.005">
     </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-11-30T06:02:36" time="0.074" tests="1">
-    <testcase classname=" dummy test" name=" dummy test" time="0.002">
+  <testsuite name="processVolunteer" errors="0" failures="0" skipped="0" timestamp="2025-12-05T16:37:19" time="0.966" tests="8">
+    <testcase classname="processVolunteer returns object with correct values" name="processVolunteer returns object with correct values" time="0.004">
+    </testcase>
+    <testcase classname="validateVolunteer returns no errors for valid input" name="validateVolunteer returns no errors for valid input" time="0">
+    </testcase>
+    <testcase classname="validateVolunteer returns error for empty charity" name="validateVolunteer returns error for empty charity" time="0.002">
+    </testcase>
+    <testcase classname="validateVolunteer returns error for invalid hours" name="validateVolunteer returns error for invalid hours" time="0.001">
+    </testcase>
+    <testcase classname="validateVolunteer returns error for missing date" name="validateVolunteer returns error for missing date" time="0">
+    </testcase>
+    <testcase classname="validateVolunteer returns error for missing rating" name="validateVolunteer returns error for missing rating" time="0.001">
+    </testcase>
+    <testcase classname="integration: volunteer form submission submitting valid form adds entry to volunteerEntries" name="integration: volunteer form submission submitting valid form adds entry to volunteerEntries" time="0.003">
+    </testcase>
+    <testcase classname="integration: volunteer form submission submitting form with missing charity shows error and does not add entry" name="integration: volunteer form submission submitting form with missing charity shows error and does not add entry" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>
