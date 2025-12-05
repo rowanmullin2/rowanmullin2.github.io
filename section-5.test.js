@@ -5,18 +5,19 @@ beforeEach(() => {
 	let html = fs.readFileSync("./section-5.html", "utf8");
 	let dom = new JSDOM(html);
 	global.document = dom.window.document;
+	store = {}
 	global.localStorage = {
-    getItem: jest.fn((key) => store[key] || null),
-    setItem: jest.fn((key, value) => {
-      store[key] = value + "";
-    }),
-    removeItem: jest.fn((key) => delete store[key]),
-    clear: jest.fn(() => (store = {})),
-  };
+		getItem: jest.fn((key) => store[key] || null),
+		setItem: jest.fn((key, value) => {
+			store[key] = value + "";
+		}),
+		removeItem: jest.fn((key) => delete store[key]),
+		clear: jest.fn(() => (store = {})),
+	};
 	init()
 }) 
 
-const { validateName, validateEmail, validateDonation, validateAmount, clearErrors, buildObject, init } = require("./section-5.js");
+const { validateName, validateEmail, validateDonation, validateAmount, clearErrors, buildObject, loadData, updateTable, updateTally, deleteEntry, addInfo, init } = require("./section-5.js");
 
 describe("Unit Tests", () => {
 
@@ -45,20 +46,44 @@ describe("Unit Tests", () => {
 	});
 
 	test("clearErrors clears DOM", () => {
-		const nameInput = global.document.querySelector("#name-input")
-		validateName(nameInput)
-		clearErrors()
-		const nonExistentErr = global.document.querySelector(".err-msg")
+		const nameInput = global.document.querySelector("#name-input");
+		validateName(nameInput);
+		clearErrors();
+		const nonExistentErr = global.document.querySelector(".err-msg");
 		expect(nonExistentErr).toEqual(null);
 	});
 
 	test("displayError displays Error correctly", () => {
-		const nameInput = global.document.querySelector("#name-input")
-		validateName(nameInput)
+		const nameInput = global.document.querySelector("#name-input");
+		validateName(nameInput);
 		const err = global.document.querySelector(".err-msg")
 		expect(err.innerHTML).toEqual("Name cannot be blank / empty.");
 	});
 	
+	test("Total Amount of items donated calculated properly", () => {
+		updateTally()
+		const tally = global.document.querySelector("#number-of-donations");
+		expect(tally.innerHTML).toEqual("Total Amount of Items Donated: 0");
+	});
+	
+	test("Deleting a record updates the localStorage and table correctly.", () => {
+		addInfo({name:"t",email:"t",donation:"t",amount:1,comment:""})
+		expect(loadData()).toEqual({"0": {name:"t",email:"t",donation:"t",amount:1,comment:""}})
+		updateTable()
+		const tableElement = global.document.querySelector("table");
+		expect(tableElement.innerHTML).toEqual("<tr><th>Name</th><th>Email</th><th>Donation Item</th><th>Amount</th><th>Comment</th></tr><tr><td>t</td><td>t</td><td>t</td><td>1</td><td></td><button type=\"button\">X</button></tr>");
+		deleteEntry(0)
+		expect(loadData()).toEqual({})
+		expect(tableElement.innerHTML).toEqual("<tr><th>Name</th><th>Email</th><th>Donation Item</th><th>Amount</th><th>Comment</th></tr>");
+	});
+	
+	test("Total volunteer hours update when a record is deleted.", () => {
+		addInfo({name:"t",email:"t",donation:"t",amount:1,comment:""})
+		const tally = global.document.querySelector("#number-of-donations");
+		expect(tally.innerHTML).toEqual("Total Amount of Items Donated: 1");
+		deleteEntry(0);
+		expect(tally.innerHTML).toEqual("Total Amount of Items Donated: 0");
+	});
 })
 
 describe("Integration Tests", () => {

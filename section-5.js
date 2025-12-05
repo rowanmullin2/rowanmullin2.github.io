@@ -210,7 +210,7 @@ function init() {
 }
 
 if (typeof window === "undefined") {
-    module.exports = {validateName, validateEmail, validateDonation, validateAmount, clearErrors, displayError, buildObject, updateTally, deleteEntry, addInfo, init};
+    module.exports = {validateName, validateEmail, validateDonation, validateAmount, clearErrors, displayError, buildObject, loadData, updateTable, updateTally, deleteEntry, addInfo, init};
 } else {
     init();
 }
