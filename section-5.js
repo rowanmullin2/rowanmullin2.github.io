@@ -111,6 +111,46 @@ function loadData() {
     return (!data) ? {} : JSON.parse(data)
 }
 
+function updateTable() {
+    clearTable()
+    Object.entries(loadData()).forEach((entry) => {
+        let index = entry[0]
+        let data = entry[1]
+        let tr = document.createElement("tr")
+        tableElement.appendChild(tr)
+
+        let nameDisplay = document.createElement("td")
+        nameDisplay.innerHTML = data.name
+        tr.appendChild(nameDisplay)
+
+        let emailDisplay = document.createElement("td")
+        emailDisplay.innerHTML = data.email
+        tr.appendChild(emailDisplay)
+
+        let donationDisplay = document.createElement("td")
+        donationDisplay.innerHTML = data.donation
+        tr.appendChild(donationDisplay)
+
+        let amountDisplay = document.createElement("td")
+        amountDisplay.innerHTML = data.amount
+        tr.appendChild(amountDisplay)
+
+        let commentDisplay = document.createElement("td")
+        commentDisplay.innerHTML = data.comment
+        tr.appendChild(commentDisplay)
+
+        let deleteButton = document.createElement("button")
+        deleteButton.setAttribute("type","button")
+        deleteButton.innerHTML = "X"
+
+        deleteButton.addEventListener("click", () => {
+            deleteEntry(index)
+        })
+
+        tr.appendChild(deleteButton)
+    })
+}
+
 function deleteEntry(id) {
     let data = loadData()
 
@@ -134,8 +174,6 @@ function addInfo(newInfo) {
     localStorage.setItem("section-5",JSON.stringify(data))
     updateTable()
 }
-
-
 
 function init() {
     nameInputElement = document.querySelector("#name-input");
