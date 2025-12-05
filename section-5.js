@@ -4,6 +4,7 @@ let donationInputElement;
 let amountInputElement;
 let commentsInputElement;
 let submitButtonElement;
+let tableElement;
 
 function validateName(nameInput) {
     const nameStr = nameInput.value.trim();
@@ -78,6 +79,35 @@ function buildObject() {
     }
 }
 
+function clearTable() {
+    tableElement.innerHTML = ""
+
+    let tableHead = document.createElement("tr")
+    tableElement.appendChild(tableHead)
+
+    let h1 = document.createElement("th")
+    h1.innerHTML = "Name"
+    tableHead.appendChild(h1)
+    
+    let h2 = document.createElement("th")
+    h2.innerHTML = "Email"
+    tableHead.appendChild(h2)
+
+    let h3 = document.createElement("th")
+    h3.innerHTML = "Donation Item"
+    tableHead.appendChild(h3)
+    
+    let h4 = document.createElement("th")
+    h4.innerHTML = "Amount"
+    tableHead.appendChild(h4)
+    
+    let h5 = document.createElement("th")
+    h5.innerHTML = "Comment"
+    tableHead.appendChild(h5)
+}
+
+
+
 function init() {
     nameInputElement = document.querySelector("#name-input");
     emailInputElement = document.querySelector("#email-input");
@@ -85,10 +115,16 @@ function init() {
     amountInputElement = document.querySelector("#amount-input");
     commentsInputElement = document.querySelector("#comment-input");
     submitButtonElement = document.querySelector("#submit-button");
+    tableElement = document.querySelector("table")
+
+    updateTable()
 
     submitButtonElement.addEventListener('click', (e) => {
         e.preventDefault();
-        buildObject();
+        let entry = buildObject();
+        if (entry !== false) {
+            addInfo(entry)
+        }
     })
 }
 
