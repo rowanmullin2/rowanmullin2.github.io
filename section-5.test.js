@@ -5,6 +5,14 @@ beforeEach(() => {
 	let html = fs.readFileSync("./section-5.html", "utf8");
 	let dom = new JSDOM(html);
 	global.document = dom.window.document;
+	global.localStorage = {
+    getItem: jest.fn((key) => store[key] || null),
+    setItem: jest.fn((key, value) => {
+      store[key] = value + "";
+    }),
+    removeItem: jest.fn((key) => delete store[key]),
+    clear: jest.fn(() => (store = {})),
+  };
 	init()
 }) 
 
