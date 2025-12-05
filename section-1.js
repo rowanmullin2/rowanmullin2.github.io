@@ -74,3 +74,157 @@ if (typeof document !== "undefined") {
     });
   }
 }
+// ----------------------------
+// Storage Helpers
+// ----------------------------
+function loadDonations() {
+  const data = localStorage.getItem("donations");
+  return data ? JSON.parse(data) : [];
+}
+
+function saveDonations(donations) {
+  localStorage.setItem("donations", JSON.stringify(donations));
+}
+
+// ----------------------------
+// Validation
+// ----------------------------
+function validateDonation({ charity, amount, date }) {
+  const errors = [];
+
+  if (!charity || charity.trim() === "") {
+    errors.push("Charity name is required.");
+  }
+
+  const numericAmount = Number(amount);
+  if (isNaN(numericAmount) || numericAmount <= 0) {
+    errors.push("Donation amount must be a valid positive number.");
+  }
+
+  if (!date) {
+    errors.push("Date of donation is required.");
+  }
+
+  return errors;
+}
+
+// ----------------------------
+// Processing
+// ----------------------------
+function processDonation({ charity, amount, date, comment }) {
+  return {
+    id: Date.now(), // unique ID for deletion
+    charity: charity.trim(),
+    amount: Number(amount),
+    date,
+    comment: comment.trim(),
+  };
+}
+
+// ----------------------------
+// Summary Calculation
+// ----------------------------
+function calculateTotal(donations) {
+  return donations.reduce((sum, d) => sum + d.amount, 0);
+}
+
+// ----------------------------
+// Table Rendering
+// ----------------------------
+function renderTable() {
+  const donations = loadDonations();
+  const tbody = document.querySelector("#donation-table tbody");
+  const totalDisplay = document.getElementById("total-amount");
+
+  tbody.innerHTML = "";
+
+  donations.forEach((donation) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${donation.charity}</td>
+      <td>${donation.amount.toFixed(2)}</td>
+      <td>${donation.date}</td>
+      <td>${donation.comment}</td>
+      <td><button class="delete-btn" data-id="${donation.id}">Delete</button></td>
+    `;
+
+    tbody.appendChild(row);
+  });
+
+  totalDisplay.textContent = calculateTotal(donations).toFixed(2);
+}
+
+
+// Delete Handler
+
+function deleteDonation(id) {
+  const donations = loadDonations().filter((d) => d.id !== id);
+  saveDonations(donations);
+  renderTable();
+}
+
+
+// Submit Handler
+
+function handleFormSubmit(event) {
+  event.preventDefault();
+
+  const donationInput = {
+    charity: document.getElementById("charity").value,
+    amount: document.getElementById("amount").value,
+    date: document.getElementById("date").value,
+    comment: document.getElementById("comment").value,
+  };
+
+  const errors = validateDonation(donationInput);
+  const errorBox = document.getElementById("errors");
+  errorBox.innerHTML = "";
+
+  if (errors.length > 0) {
+    errorBox.innerHTML = errors.map((e) => `<p>${e}</p>`).join("");
+    return;
+  }
+
+  const donation = processDonation(donationInput);
+  const donations = loadDonations();
+  donations.push(donation);
+  saveDonations(donations);
+
+  renderTable();
+  event.target.reset();
+}
+
+
+// DOM Setup 
+
+if (typeof document !== "undefined") {
+  document.addEventListener("DOMContentLoaded", () => {
+    renderTable();
+
+    const form = document.getElementById("donation-form");
+    if (form) form.addEventListener("submit", handleFormSubmit);
+
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("delete-btn")) {
+        const id = Number(e.target.dataset.id);
+        deleteDonation(id);
+      }
+    });
+  });
+}
+
+
+// Exports for Jest
+
+if (typeof module !== "undefined") {
+  module.exports = {
+    validateDonation,
+    processDonation,
+    calculateTotal,
+    deleteDonation,
+    loadDonations,
+    saveDonations,
+    renderTable,
+  };
+}
