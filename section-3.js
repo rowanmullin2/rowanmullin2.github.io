@@ -99,15 +99,32 @@ function displayTableData() {
 
     let formcontents = JSON.parse(localStorage.getItem("formData")) || [];
 
-    formcontents.forEach((formData) => {
+    formcontents.forEach((formData, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `<td>${formData.eventName}</td>
         <td>${formData.repreName}</td>
         <td>${formData.repreEmail}</td>
         <td>${formData.repreRole}</td>
+        <td><button class="remove-row" data-index="${index}">Remove</button></td>
         `;
         table.appendChild(row);
-    })
+    });
+
+     // Add event listeners to all remove buttons
+    const removeButtons = document.querySelectorAll(".remove-row");
+    removeButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            const idx = e.target.getAttribute("data-index");
+            removeFormData(idx);
+        });
+    });
+}
+
+function removeFormData(index) {
+    let formcontents = JSON.parse(localStorage.getItem("formData")) || [];
+    formcontents.splice(index, 1); 
+    localStorage.setItem("formData", JSON.stringify(formcontents));
+    displayTableData(); 
 }
 
 function storeInput(eventName, repreName, repreEmail, repreRole) {
@@ -141,6 +158,7 @@ function init() {
             )
             saveFormData(formData);
             displayTableData();
+            
         }
 
     })
