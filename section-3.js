@@ -3,6 +3,7 @@ let representativeNameInput;
 let representativeEmailInput;
 let roleSelected;
 let submitButton;
+let table;
 
 function showError(inputNode, message) {
     let error = document.createElement("div");
@@ -93,6 +94,22 @@ function saveFormData(formData) {
     console.log(localStorage.getItem("formData"))
 }
 
+function displayTableData() {
+    table.innerHTML = "";
+
+    let formcontents = JSON.parse(localStorage.getItem("formData")) || [];
+
+    formcontents.forEach((formData) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${formData.eventName}</td>
+        <td>${formData.repreName}</td>
+        <td>${formData.repreEmail}</td>
+        <td>${formData.repreRole}</td>
+        `;
+        table.appendChild(row);
+    })
+}
+
 function storeInput(eventName, repreName, repreEmail, repreRole) {
     const formStorage ={
         eventName, 
@@ -100,7 +117,7 @@ function storeInput(eventName, repreName, repreEmail, repreRole) {
         repreEmail, 
         repreRole};
         console.log(formStorage);
-        saveFormData(formStorage)
+        return formStorage
     }
 
 function init() {
@@ -109,7 +126,9 @@ function init() {
     representativeEmailInput = document.querySelector("#representative-email");
     roleSelected = document.querySelector("#company-role");
     submitButton = document.querySelector("#submit");
+    table = document.querySelector("#formdata-table tbody");
     
+    displayTableData();
     submitButton.addEventListener("click", (e) => {
         e.preventDefault()
         let isValid = isValidForm(eventNameInput, representativeNameInput, representativeEmailInput, roleSelected)
@@ -120,6 +139,8 @@ function init() {
                 representativeEmailInput.value,
                 roleSelected.value
             )
+            saveFormData(formData);
+            displayTableData();
         }
 
     })
