@@ -111,6 +111,21 @@ function loadData() {
     return (!data) ? {} : JSON.parse(data)
 }
 
+function deleteEntry(id) {
+    let data = loadData()
+
+    Object.entries(data).forEach(entry => {
+        if (entry[0] >= id) {delete data[entry[0]]}
+    })
+
+    Object.entries(loadData()).forEach(entry => {
+        if (entry[0] > id) {data[entry[0]-1] = entry[1]}
+    })
+
+    localStorage.setItem("section-5",JSON.stringify(data))
+    updateTable()
+}
+
 
 
 function init() {
