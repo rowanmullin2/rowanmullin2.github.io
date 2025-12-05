@@ -98,4 +98,11 @@ describe("Integration Tests", () => {
 		expect(buildObject()).toEqual({name:"tim", email:"j@joe.com", donation:"shovel", amount:1, comment:"test"});
 	});
 
+	test("Test that the table updates correctly after data is added to localStorage", () => {
+		addInfo({name:"t",email:"t",donation:"t",amount:1,comment:""})
+		expect(loadData()).toEqual({"0": {name:"t",email:"t",donation:"t",amount:1,comment:""}})
+		updateTable()
+		const tableElement = global.document.querySelector("table");
+		expect(tableElement.innerHTML).toEqual("<tr><th>Name</th><th>Email</th><th>Donation Item</th><th>Amount</th><th>Comment</th></tr><tr><td>t</td><td>t</td><td>t</td><td>1</td><td></td><button type=\"button\">X</button></tr>");
+	});
 })
