@@ -106,6 +106,11 @@ function clearTable() {
     tableHead.appendChild(h5)
 }
 
+function loadData() {
+    const data = localStorage.getItem("section-5")
+    return (!data) ? {} : JSON.parse(data)
+}
+
 
 
 function init() {
