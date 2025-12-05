@@ -126,6 +126,15 @@ function deleteEntry(id) {
     updateTable()
 }
 
+function addInfo(newInfo) {
+    let data = loadData()
+    let entryCount = Object.keys(data).length
+    data[entryCount] = newInfo
+
+    localStorage.setItem("section-5",JSON.stringify(data))
+    updateTable()
+}
+
 
 
 function init() {
