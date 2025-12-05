@@ -158,7 +158,7 @@ function init() {
             )
             saveFormData(formData);
             displayTableData();
-            
+            location.reload();
         }
 
     })
