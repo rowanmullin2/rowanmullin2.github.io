@@ -1,7 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="0" errors="0" time="2.748">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-12-01T05:18:05" time="0.501" tests="1">
-    <testcase classname=" placeholder test" name=" placeholder test" time="0.005">
+<testsuites name="jest tests" tests="7" failures="6" errors="0" time="1.584">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-12-05T07:07:47" time="0.385" tests="1">
+    <testcase classname=" placeholder test" name=" placeholder test" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="validateDonation" errors="0" failures="6" skipped="0" timestamp="2025-12-05T07:07:47" time="0.87" tests="6">
+    <testcase classname="validateDonation identifies empty required fields" name="validateDonation identifies empty required fields" time="0.012">
+      <failure>ReferenceError: document is not defined
+    at Object.document (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\section-1.test.js:51:3)
+    at Promise.finally.completed (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusHook (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:976:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:941:5)
+    at C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:275:16)
+    at runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:343:7)
+    at Object.worker (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:497:12)</failure>
+    </testcase>
+    <testcase classname="validateDonation flags invalid donation amounts" name="validateDonation flags invalid donation amounts" time="0.001">
+      <failure>ReferenceError: document is not defined
+    at Object.document (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\section-1.test.js:51:3)
+    at Promise.finally.completed (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusHook (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:976:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:941:5)
+    at C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:275:16)
+    at runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:343:7)
+    at Object.worker (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:497:12)</failure>
+    </testcase>
+    <testcase classname="validateDonation returns no errors for valid input" name="validateDonation returns no errors for valid input" time="0.001">
+      <failure>ReferenceError: document is not defined
+    at Object.document (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\section-1.test.js:51:3)
+    at Promise.finally.completed (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusHook (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:976:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:941:5)
+    at C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:275:16)
+    at runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:343:7)
+    at Object.worker (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:497:12)</failure>
+    </testcase>
+    <testcase classname="processDonation returns correct temporary data object" name="processDonation returns correct temporary data object" time="0.004">
+      <failure>ReferenceError: document is not defined
+    at Object.document (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\section-1.test.js:51:3)
+    at Promise.finally.completed (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusHook (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:976:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:941:5)
+    at C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:275:16)
+    at runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:343:7)
+    at Object.worker (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:497:12)</failure>
+    </testcase>
+    <testcase classname="Integration: Form Submission updates temporary data object on valid submission" name="Integration: Form Submission updates temporary data object on valid submission" time="0.002">
+      <failure>ReferenceError: document is not defined
+    at Object.document (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\section-1.test.js:51:3)
+    at Promise.finally.completed (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusHook (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:976:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:941:5)
+    at C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:275:16)
+    at runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:343:7)
+    at Object.worker (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:497:12)</failure>
+    </testcase>
+    <testcase classname="Integration: Form Submission shows validation errors in the DOM" name="Integration: Form Submission shows validation errors in the DOM" time="0.001">
+      <failure>ReferenceError: document is not defined
+    at Object.document (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\section-1.test.js:51:3)
+    at Promise.finally.completed (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusHook (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:976:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:941:5)
+    at C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:275:16)
+    at runTest (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:343:7)
+    at Object.worker (C:\Users\gilla\OneDrive\Documents\RRC\COMP 2230\assignment-7-2230\node_modules\jest-runner\build\testWorker.js:497:12)</failure>
     </testcase>
   </testsuite>
 </testsuites>
