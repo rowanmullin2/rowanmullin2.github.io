@@ -6,36 +6,40 @@ let roleSelected;
 const { JSDOM } = require("jsdom");
 const fs = require("fs");
 
-// ---- MOCK localStorage HERE ----
-global.localStorage = {
-    store: {},
-    getItem(key) {
-        return this.store[key] || null;
-    },
-    setItem(key, value) {
-        this.store[key] = String(value);
-    },
-    removeItem(key) {
-        delete this.store[key];
-    },
-    clear() {
-        this.store = {};
-    }
-};
-// ---------------------------------
-
 beforeEach(() => {
     let html = fs.readFileSync("./section-3.html", "utf8");
-	let dom = new JSDOM(html);
+	let dom = new JSDOM(html, { url: "http://localhost" });
 	global.document = dom.window.document;
+	global.window = dom.window;
+
+    global.localStorage = {
+        store: {},
+
+        getItem(key) {
+            return this.store[key] || null;
+        },
+
+        setItem(key, value) {
+            this.store[key] = value.toString();
+        },
+
+        removeItem(key) {
+            delete this.store[key];
+        },
+
+        clear() {
+            this.store = {};
+        }
+    };
 
     eventNameInput = global.document.querySelector("#event-name");
     representativeNameInput = global.document.querySelector("#representative-name");
     representativeEmailInput = global.document.querySelector("#representative-email");
     roleSelected = global.document.querySelector("#company-role");
     
-    init()
-})
+    init();
+});
+
 
 const {storeInput, isValidForm, displayTableData, removeFormData, init } = require("./section-3.js");
 
