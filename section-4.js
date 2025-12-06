@@ -15,6 +15,8 @@ const sponsorCommentInput = document.getElementById("sponsor-comment");
 const sponsorEventInput = document.getElementById("sponsor-event");
 // This line gets the feedback container element where messages will be shown
 const sponsorFeedback = document.getElementById("sponsor-feedback");
+// This line gets the table body element where sponsor rows will be displayed
+const sponsorTableBody = document.getElementById("sponsor-table-body");
 
 // This line defines a function that creates a sponsor object from individual field values
 function createSponsorEntry(brand, name, email, comment, eventName) {
@@ -99,6 +101,70 @@ function displaySponsorSuccess(message) {
 	sponsorFeedback.classList.add("success-text");
 }
 
+// This line defines a function that rebuilds the sponsor table using the sponsorEntries array
+function renderSponsorTable() {
+	// This line checks whether the sponsorTableBody element exists before trying to use it
+	if (!sponsorTableBody) {
+		// This line exits the function early when the table body is not present, such as in some Jest tests
+		return;
+	}
+	// This line clears any existing rows from the table body so we can rebuild it from scratch
+	sponsorTableBody.textContent = "";
+	// This line starts a loop that runs once for each sponsor object stored in sponsorEntries
+	for (let index = 0; index < sponsorEntries.length; index++) {
+		// This line stores the sponsor object for the current loop position in a local variable
+		const sponsor = sponsorEntries[index];
+		// This line creates a new table row element that will hold the sponsor data cells
+		const row = document.createElement("tr");
+		// This line creates a table cell element for the sponsor brand or company name
+		const brandCell = document.createElement("td");
+		// This line sets the text inside the brand cell to the sponsor's brand value
+		brandCell.textContent = sponsor.brand;
+		// This line appends the brand cell into the current table row
+		row.appendChild(brandCell);
+		// This line creates a table cell element for the sponsor contact name
+		const nameCell = document.createElement("td");
+		// This line sets the text inside the name cell to the sponsor's contact name value
+		nameCell.textContent = sponsor.name;
+		// This line appends the name cell into the current table row
+		row.appendChild(nameCell);
+		// This line creates a table cell element for the sponsor email address
+		const emailCell = document.createElement("td");
+		// This line sets the text inside the email cell to the sponsor's email value
+		emailCell.textContent = sponsor.email;
+		// This line appends the email cell into the current table row
+		row.appendChild(emailCell);
+		// This line creates a table cell element for the sponsor comment
+		const commentCell = document.createElement("td");
+		// This line sets the text inside the comment cell to the sponsor's comment value
+		commentCell.textContent = sponsor.comment;
+		// This line appends the comment cell into the current table row
+		row.appendChild(commentCell);
+		// This line creates a table cell element for the sponsored event name
+		const eventCell = document.createElement("td");
+		// This line sets the text inside the event cell to the sponsor's event value
+		eventCell.textContent = sponsor.event;
+		// This line appends the event cell into the current table row
+		row.appendChild(eventCell);
+		// This line creates a table cell element that will hold the delete button
+		const actionsCell = document.createElement("td");
+		// This line creates a button element that will later be wired up to delete this sponsor entry
+		const deleteButton = document.createElement("button");
+		// This line sets the button type to button so clicking it does not submit the form
+		deleteButton.type = "button";
+		// This line sets a CSS class on the delete button so it can be styled in the stylesheet
+		deleteButton.className = "sponsor-delete-button";
+		// This line sets the text label that appears on the delete button
+		deleteButton.textContent = "Delete";
+		// This line appends the delete button into the actions table cell
+		actionsCell.appendChild(deleteButton);
+		// This line appends the actions cell into the current table row
+		row.appendChild(actionsCell);
+		// This line appends the completed row into the sponsor table body in the page
+		sponsorTableBody.appendChild(row);
+	}
+}
+
 // This line defines a function that handles the sponsor form submit event
 function handleSponsorFormSubmit(event) {
 	// This line prevents the browser from performing its default form submission behaviour
@@ -127,6 +193,8 @@ function handleSponsorFormSubmit(event) {
 	}
 	// This line adds the valid sponsor object to the sponsorEntries array for temporary storage
 	sponsorEntries.push(sponsorData);
+	// This line calls renderSponsorTable so the new sponsor appears in the table on the page
+	renderSponsorTable();
 	// This line resets the form fields so the user can add another sponsor
 	sponsorForm.reset();
 	// This line shows a success message saying the sponsor was added correctly
@@ -138,7 +206,7 @@ function handleSponsorFormSubmit(event) {
 // This line adds an event listener so the handleSponsorFormSubmit function runs when the form is submitted
 sponsorForm.addEventListener("submit", handleSponsorFormSubmit);
 
-// This line checks whether the special 'module' object exists and has an 'exports' property, which means the code is running in a Node or Jest environment rather than just in the browser
+// This line checks whether the special module object exists so Jest tests can import functions in a Node environment
 if (typeof module !== "undefined" && module.exports) {
 	// This line exports selected values so that Jest tests can import and use these functions and the temporary data array
 	module.exports = {
@@ -150,5 +218,7 @@ if (typeof module !== "undefined" && module.exports) {
 		validateSponsorData: validateSponsorData,
 		// This line exposes the handleSponsorFormSubmit function so integration tests can simulate submitting the form with Jest
 		handleSponsorFormSubmit: handleSponsorFormSubmit,
+		// This line exposes the renderSponsorTable function so future Jest tests can confirm the table output
+		renderSponsorTable: renderSponsorTable,
 	};
 }
