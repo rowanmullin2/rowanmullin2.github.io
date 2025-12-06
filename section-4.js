@@ -17,6 +17,8 @@ const sponsorEventInput = document.getElementById("sponsor-event");
 const sponsorFeedback = document.getElementById("sponsor-feedback");
 // This line gets the table body element where sponsor rows will be displayed
 const sponsorTableBody = document.getElementById("sponsor-table-body");
+// This line gets the element that will display the total sponsor count in the summary section
+const sponsorTotalCountElement = document.getElementById("sponsor-total-count");
 // This line declares a string constant that will be used as the key for storing sponsor data in localStorage
 const SPONSOR_STORAGE_KEY = "sponsorEntries";
 
@@ -103,6 +105,25 @@ function displaySponsorSuccess(message) {
 	sponsorFeedback.classList.add("success-text");
 }
 
+// This line defines a function that calculates the total number of sponsors based on the sponsorEntries array
+function calculateTotalSponsors() {
+	// This line returns the length of the sponsorEntries array as the total number of sponsors
+	return sponsorEntries.length;
+}
+
+// This line defines a function that updates the summary section with the latest total sponsor count
+function updateSponsorSummary() {
+	// This line checks whether the sponsorTotalCountElement exists before trying to update it
+	if (!sponsorTotalCountElement) {
+		// This line exits the function early when the summary element is not present in the current document
+		return;
+	}
+	// This line calls calculateTotalSponsors to get the number of sponsors stored in sponsorEntries
+	const totalSponsors = calculateTotalSponsors();
+	// This line sets the text content of the summary element to the total sponsor count
+	sponsorTotalCountElement.textContent = totalSponsors;
+}
+
 // This line defines a function that rebuilds the sponsor table using the sponsorEntries array
 function renderSponsorTable() {
 	// This line checks whether the sponsorTableBody element exists before trying to use it
@@ -150,7 +171,7 @@ function renderSponsorTable() {
 		row.appendChild(eventCell);
 		// This line creates a table cell element that will hold the delete button
 		const actionsCell = document.createElement("td");
-		// This line creates a button element that will later be wired up to delete this sponsor entry
+		// This line creates a button element that will be used to delete this sponsor entry
 		const deleteButton = document.createElement("button");
 		// This line sets the button type to button so clicking it does not submit the form
 		deleteButton.type = "button";
@@ -158,6 +179,15 @@ function renderSponsorTable() {
 		deleteButton.className = "sponsor-delete-button";
 		// This line sets the text label that appears on the delete button
 		deleteButton.textContent = "Delete";
+		// This line adds a click event listener to the delete button so the user can remove this sponsor entry
+		deleteButton.addEventListener("click", function () {
+			// This line removes one sponsor object from the sponsorEntries array at the position that matches this row
+			sponsorEntries.splice(index, 1);
+			// This line calls a helper function to save the updated sponsorEntries array into localStorage
+			saveSponsorEntriesToLocalStorage();
+			// This line calls a helper function so the sponsor table in the page is rebuilt without the deleted entry
+			renderSponsorTable();
+		});
 		// This line appends the delete button into the actions table cell
 		actionsCell.appendChild(deleteButton);
 		// This line appends the actions cell into the current table row
@@ -165,6 +195,8 @@ function renderSponsorTable() {
 		// This line appends the completed row into the sponsor table body in the page
 		sponsorTableBody.appendChild(row);
 	}
+	// This line calls the helper function that updates the summary so it matches the current sponsorEntries array
+	updateSponsorSummary();
 }
 
 // This line defines a function that saves the sponsorEntries array into localStorage
@@ -282,6 +314,10 @@ if (typeof module !== "undefined" && module.exports) {
 		saveSponsorEntriesToLocalStorage: saveSponsorEntriesToLocalStorage,
 		// This line exposes the loadSponsorEntriesFromLocalStorage function so tests can check that it rebuilds the sponsorEntries array from localStorage
 		loadSponsorEntriesFromLocalStorage: loadSponsorEntriesFromLocalStorage,
+		// This line exposes the calculateTotalSponsors function so unit tests can verify the sponsor count it returns
+		calculateTotalSponsors: calculateTotalSponsors,
+		// This line exposes the updateSponsorSummary function so tests can confirm it updates the summary text
+		updateSponsorSummary: updateSponsorSummary,
 		// This line exposes the SPONSOR_STORAGE_KEY constant so tests can refer to the same key used for localStorage
 		SPONSOR_STORAGE_KEY: SPONSOR_STORAGE_KEY,
 	};
