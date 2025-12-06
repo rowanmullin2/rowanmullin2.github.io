@@ -166,7 +166,7 @@ function init() {
 }
 
 if (typeof window === "undefined") {
-    module.exports = { isValidForm, storeInput, formStorage, init};
+    module.exports = { isValidForm, removeFormData, storeInput, displayTableData, init};
 } else {
     init()
 }
