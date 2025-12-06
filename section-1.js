@@ -3,7 +3,7 @@ function validateDonation({ charity, amount, date }) {
   const errors = [];
 
   // Check charity name
-  if (!charity || charity.trim() === "") {
+  if(!charity || charity.trim() === "") {
     errors.push("Charity name is required.");
   }
 
@@ -74,9 +74,9 @@ if (typeof document !== "undefined") {
     });
   }
 }
-// ----------------------------
+
 // Storage Helpers
-// ----------------------------
+
 function loadDonations() {
   const data = localStorage.getItem("donations");
   return data ? JSON.parse(data) : [];
@@ -86,51 +86,16 @@ function saveDonations(donations) {
   localStorage.setItem("donations", JSON.stringify(donations));
 }
 
-// ----------------------------
-// Validation
-// ----------------------------
-function validateDonation({ charity, amount, date }) {
-  const errors = [];
 
-  if (!charity || charity.trim() === "") {
-    errors.push("Charity name is required.");
-  }
-
-  const numericAmount = Number(amount);
-  if (isNaN(numericAmount) || numericAmount <= 0) {
-    errors.push("Donation amount must be a valid positive number.");
-  }
-
-  if (!date) {
-    errors.push("Date of donation is required.");
-  }
-
-  return errors;
-}
-
-// ----------------------------
-// Processing
-// ----------------------------
-function processDonation({ charity, amount, date, comment }) {
-  return {
-    id: Date.now(), // unique ID for deletion
-    charity: charity.trim(),
-    amount: Number(amount),
-    date,
-    comment: comment.trim(),
-  };
-}
-
-// ----------------------------
 // Summary Calculation
-// ----------------------------
+
 function calculateTotal(donations) {
   return donations.reduce((sum, d) => sum + d.amount, 0);
 }
 
-// ----------------------------
+
 // Table Rendering
-// ----------------------------
+
 function renderTable() {
   const donations = loadDonations();
   const tbody = document.querySelector("#donation-table tbody");
