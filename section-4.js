@@ -15,6 +15,12 @@ const sponsorCommentInput = document.getElementById("sponsor-comment");
 const sponsorEventInput = document.getElementById("sponsor-event");
 // This line gets the feedback container element where messages will be shown
 const sponsorFeedback = document.getElementById("sponsor-feedback");
+// This line gets the table body element where sponsor rows will be displayed
+const sponsorTableBody = document.getElementById("sponsor-table-body");
+// This line gets the element that will display the total sponsor count in the summary section
+const sponsorTotalCountElement = document.getElementById("sponsor-total-count");
+// This line declares a string constant that will be used as the key for storing sponsor data in localStorage
+const SPONSOR_STORAGE_KEY = "sponsorEntries";
 
 // This line defines a function that creates a sponsor object from individual field values
 function createSponsorEntry(brand, name, email, comment, eventName) {
@@ -99,6 +105,148 @@ function displaySponsorSuccess(message) {
 	sponsorFeedback.classList.add("success-text");
 }
 
+// This line defines a function that calculates the total number of sponsors based on the sponsorEntries array
+function calculateTotalSponsors() {
+	// This line returns the length of the sponsorEntries array as the total number of sponsors
+	return sponsorEntries.length;
+}
+
+// This line defines a function that updates the summary section with the latest total sponsor count
+function updateSponsorSummary() {
+	// This line checks whether the sponsorTotalCountElement exists before trying to update it
+	if (!sponsorTotalCountElement) {
+		// This line exits the function early when the summary element is not present in the current document
+		return;
+	}
+	// This line calls calculateTotalSponsors to get the number of sponsors stored in sponsorEntries
+	const totalSponsors = calculateTotalSponsors();
+	// This line sets the text content of the summary element to the total sponsor count
+	sponsorTotalCountElement.textContent = totalSponsors;
+}
+
+// This line defines a function that rebuilds the sponsor table using the sponsorEntries array
+function renderSponsorTable() {
+	// This line checks whether the sponsorTableBody element exists before trying to use it
+	if (!sponsorTableBody) {
+		// This line exits the function early when the table body is not present, such as in some Jest tests
+		return;
+	}
+	// This line clears any existing rows from the table body so we can rebuild it from scratch
+	sponsorTableBody.textContent = "";
+	// This line starts a loop that runs once for each sponsor object stored in sponsorEntries
+	for (let index = 0; index < sponsorEntries.length; index++) {
+		// This line stores the sponsor object for the current loop position in a local variable
+		const sponsor = sponsorEntries[index];
+		// This line creates a new table row element that will hold the sponsor data cells
+		const row = document.createElement("tr");
+		// This line creates a table cell element for the sponsor brand or company name
+		const brandCell = document.createElement("td");
+		// This line sets the text inside the brand cell to the sponsor's brand value
+		brandCell.textContent = sponsor.brand;
+		// This line appends the brand cell into the current table row
+		row.appendChild(brandCell);
+		// This line creates a table cell element for the sponsor contact name
+		const nameCell = document.createElement("td");
+		// This line sets the text inside the name cell to the sponsor's contact name value
+		nameCell.textContent = sponsor.name;
+		// This line appends the name cell into the current table row
+		row.appendChild(nameCell);
+		// This line creates a table cell element for the sponsor email address
+		const emailCell = document.createElement("td");
+		// This line sets the text inside the email cell to the sponsor's email value
+		emailCell.textContent = sponsor.email;
+		// This line appends the email cell into the current table row
+		row.appendChild(emailCell);
+		// This line creates a table cell element for the sponsor comment
+		const commentCell = document.createElement("td");
+		// This line sets the text inside the comment cell to the sponsor's comment value
+		commentCell.textContent = sponsor.comment;
+		// This line appends the comment cell into the current table row
+		row.appendChild(commentCell);
+		// This line creates a table cell element for the sponsored event name
+		const eventCell = document.createElement("td");
+		// This line sets the text inside the event cell to the sponsor's event value
+		eventCell.textContent = sponsor.event;
+		// This line appends the event cell into the current table row
+		row.appendChild(eventCell);
+		// This line creates a table cell element that will hold the delete button
+		const actionsCell = document.createElement("td");
+		// This line creates a button element that will be used to delete this sponsor entry
+		const deleteButton = document.createElement("button");
+		// This line sets the button type to button so clicking it does not submit the form
+		deleteButton.type = "button";
+		// This line sets a CSS class on the delete button so it can be styled in the stylesheet
+		deleteButton.className = "sponsor-delete-button";
+		// This line sets the text label that appears on the delete button
+		deleteButton.textContent = "Delete";
+		// This line adds a click event listener to the delete button so the user can remove this sponsor entry
+		deleteButton.addEventListener("click", function () {
+			// This line removes one sponsor object from the sponsorEntries array at the position that matches this row
+			sponsorEntries.splice(index, 1);
+			// This line calls a helper function to save the updated sponsorEntries array into localStorage
+			saveSponsorEntriesToLocalStorage();
+			// This line calls a helper function so the sponsor table in the page is rebuilt without the deleted entry
+			renderSponsorTable();
+		});
+		// This line appends the delete button into the actions table cell
+		actionsCell.appendChild(deleteButton);
+		// This line appends the actions cell into the current table row
+		row.appendChild(actionsCell);
+		// This line appends the completed row into the sponsor table body in the page
+		sponsorTableBody.appendChild(row);
+	}
+	// This line calls the helper function that updates the summary so it matches the current sponsorEntries array
+	updateSponsorSummary();
+}
+
+// This line defines a function that saves the sponsorEntries array into localStorage
+function saveSponsorEntriesToLocalStorage() {
+	// This line checks that the localStorage object exists before trying to use it
+	if (typeof localStorage === "undefined") {
+		// This line exits the function early when localStorage is not available, such as in some test environments
+		return;
+	}
+	// This line converts the sponsorEntries array into a JSON string so it can be stored as text
+	const sponsorEntriesJson = JSON.stringify(sponsorEntries);
+	// This line saves the JSON string into localStorage using the SPONSOR_STORAGE_KEY constant as the storage key
+	localStorage.setItem(SPONSOR_STORAGE_KEY, sponsorEntriesJson);
+}
+
+// This line defines a function that loads sponsor entries from localStorage back into the sponsorEntries array
+function loadSponsorEntriesFromLocalStorage() {
+	// This line checks that the localStorage object exists before trying to use it
+	if (typeof localStorage === "undefined") {
+		// This line exits the function early when localStorage is not available
+		return;
+	}
+	// This line reads any previously stored sponsor data string from localStorage using the storage key
+	const storedSponsorEntries = localStorage.getItem(SPONSOR_STORAGE_KEY);
+	// This line checks if there was no stored value in localStorage
+	if (storedSponsorEntries === null) {
+		// This line exits the function early when there is nothing to load
+		return;
+	}
+	// This line wraps the JSON parsing in a try block in case the stored text is not valid JSON
+	try {
+		// This line parses the JSON string from localStorage back into a regular JavaScript array
+		const parsedEntries = JSON.parse(storedSponsorEntries);
+		// This line clears any existing entries from the sponsorEntries array so it matches what was stored
+		sponsorEntries.length = 0;
+		// This line starts a loop that runs once for each parsed sponsor object loaded from storage
+		for (let index = 0; index < parsedEntries.length; index++) {
+			// This line stores the sponsor object for the current loop position in a local variable
+			const sponsor = parsedEntries[index];
+			// This line adds the sponsor object from storage into the sponsorEntries array in memory
+			sponsorEntries.push(sponsor);
+		}
+		// This line calls renderSponsorTable so the table in the page shows the sponsors that were loaded from storage
+		renderSponsorTable();
+	} catch (error) {
+		// This line logs an error to the console when the stored data cannot be parsed correctly
+		console.error("Unable to read sponsor entries from localStorage", error);
+	}
+}
+
 // This line defines a function that handles the sponsor form submit event
 function handleSponsorFormSubmit(event) {
 	// This line prevents the browser from performing its default form submission behaviour
@@ -127,6 +275,10 @@ function handleSponsorFormSubmit(event) {
 	}
 	// This line adds the valid sponsor object to the sponsorEntries array for temporary storage
 	sponsorEntries.push(sponsorData);
+	// This line calls a helper function to save the updated sponsorEntries array into localStorage
+	saveSponsorEntriesToLocalStorage();
+	// This line calls a helper function so the sponsor table in the page is rebuilt with the latest entries
+	renderSponsorTable();
 	// This line resets the form fields so the user can add another sponsor
 	sponsorForm.reset();
 	// This line shows a success message saying the sponsor was added correctly
@@ -138,7 +290,13 @@ function handleSponsorFormSubmit(event) {
 // This line adds an event listener so the handleSponsorFormSubmit function runs when the form is submitted
 sponsorForm.addEventListener("submit", handleSponsorFormSubmit);
 
-// This line checks whether the special 'module' object exists and has an 'exports' property, which means the code is running in a Node or Jest environment rather than just in the browser
+// This line checks that the code is running in a browser window before trying to load any saved sponsor data
+if (typeof window !== "undefined") {
+	// This line calls the function that loads sponsor entries from localStorage and updates the table display
+	loadSponsorEntriesFromLocalStorage();
+}
+
+// This line checks whether the special 'module' object exists and has an exports property, which means the code is running in a Node or Jest environment rather than just in the browser
 if (typeof module !== "undefined" && module.exports) {
 	// This line exports selected values so that Jest tests can import and use these functions and the temporary data array
 	module.exports = {
@@ -150,5 +308,17 @@ if (typeof module !== "undefined" && module.exports) {
 		validateSponsorData: validateSponsorData,
 		// This line exposes the handleSponsorFormSubmit function so integration tests can simulate submitting the form with Jest
 		handleSponsorFormSubmit: handleSponsorFormSubmit,
+		// This line exposes the renderSponsorTable function so tests can confirm that the table rows match the sponsorEntries array
+		renderSponsorTable: renderSponsorTable,
+		// This line exposes the saveSponsorEntriesToLocalStorage function so tests can check that it writes data into localStorage
+		saveSponsorEntriesToLocalStorage: saveSponsorEntriesToLocalStorage,
+		// This line exposes the loadSponsorEntriesFromLocalStorage function so tests can check that it rebuilds the sponsorEntries array from localStorage
+		loadSponsorEntriesFromLocalStorage: loadSponsorEntriesFromLocalStorage,
+		// This line exposes the calculateTotalSponsors function so unit tests can verify the sponsor count it returns
+		calculateTotalSponsors: calculateTotalSponsors,
+		// This line exposes the updateSponsorSummary function so tests can confirm it updates the summary text
+		updateSponsorSummary: updateSponsorSummary,
+		// This line exposes the SPONSOR_STORAGE_KEY constant so tests can refer to the same key used for localStorage
+		SPONSOR_STORAGE_KEY: SPONSOR_STORAGE_KEY,
 	};
 }

@@ -12,14 +12,15 @@
 		<title>PiXELL River Financial - Sponsor Tracker</title>
 		<!-- This line links the external CSS file that styles the sponsor tracker page -->
 		<link rel="stylesheet" href="section-4.css">
-		<!-- Shared Navbar-->
+		<!-- This line links the shared script that loads the header and navigation into the page -->
 		<script src="load-page-components.js" defer></script>
 	<!-- This line closes the head section -->
 	</head>
 	<!-- This line opens the body section that contains all visible content -->
 	<body>
-		<!-- This line starts the header at the top of the page -->
+		<!-- This line defines a container where the shared header HTML will be loaded -->
 		<div id="header-container"></div>
+		<!-- This line defines a container where the shared navigation HTML will be loaded -->
 		<div id="nav-container"></div>
 
 		<!-- This line opens the main element that holds the primary content -->
@@ -45,16 +46,16 @@
 					<div class="form-group">
 						<!-- This line defines a label for the sponsor contact name input field -->
 						<label for="sponsor-name">Name</label>
-						<!-- This line defines a text input where the sponsor contact person's name is entered and marks it as required -->
+						<!-- This line defines a text input where the sponsor contact's name is entered and marks it as required -->
 						<input type="text" id="sponsor-name" name="name" required>
 					<!-- This line closes the sponsor contact name field container -->
 					</div>
 
 					<!-- This line opens a container for the sponsor email field -->
 					<div class="form-group">
-						<!-- This line defines a label for the email input field -->
+						<!-- This line defines a label for the sponsor email address input field -->
 						<label for="sponsor-email">Email</label>
-						<!-- This line defines an email input which lets the browser validate email format and marks it as required -->
+						<!-- This line defines an email input where the sponsor email address is entered and marks it as required -->
 						<input type="email" id="sponsor-email" name="email" required>
 					<!-- This line closes the sponsor email field container -->
 					</div>
@@ -87,8 +88,53 @@
 					</div>
 				<!-- This line closes the sponsor form element -->
 				</form>
+
 				<!-- This line defines a container where JavaScript can display error or success messages -->
 				<div id="sponsor-feedback"></div>
+
+				<!-- This line opens a container that will hold the table of logged sponsors -->
+				<div id="sponsor-table-container">
+					<!-- This line displays a heading for the list of sponsors that have been recorded -->
+					<h3>Logged Sponsors</h3>
+					<!-- This line opens the table element that will display sponsor records -->
+					<table id="sponsor-table">
+						<!-- This line opens the table header section -->
+						<thead>
+							<!-- This line opens the table row that contains the column headings -->
+							<tr>
+								<!-- This line creates a header cell for the sponsor brand or company column -->
+								<th>Brand/Company</th>
+								<!-- This line creates a header cell for the sponsor contact name column -->
+								<th>Contact Name</th>
+								<!-- This line creates a header cell for the sponsor email column -->
+								<th>Email</th>
+								<!-- This line creates a header cell for the sponsor comment column -->
+								<th>Comment</th>
+								<!-- This line creates a header cell for the sponsored event column -->
+								<th>Event Sponsored</th>
+								<!-- This line creates a header cell for the actions column where delete buttons will appear -->
+								<th>Actions</th>
+							<!-- This line closes the table header row -->
+							</tr>
+						<!-- This line closes the table header section -->
+						</thead>
+						<!-- This line opens the table body where JavaScript will insert sponsor rows -->
+						<tbody id="sponsor-table-body">
+							<!-- This line intentionally leaves the table body empty because rows will be added dynamically with JavaScript -->
+						</tbody>
+					<!-- This line closes the sponsor table element -->
+					</table>
+				<!-- This line closes the sponsor table container -->
+				</div>
+
+				<!-- This line opens a container that will show summary information about all sponsors -->
+				<div id="sponsor-summary">
+					<!-- This line displays a heading for the sponsor summary section -->
+					<h3>Sponsor Summary</h3>
+					<!-- This line displays a sentence showing the total number of sponsors recorded so far -->
+					<p>Total sponsors: <span id="sponsor-total-count">0</span></p>
+				<!-- This line closes the sponsor summary container -->
+				</div>
 			<!-- This line closes the sponsor tracker section -->
 			</section>
 		<!-- This line closes the main content area -->
@@ -101,7 +147,7 @@
 		<!-- This line closes the footer element -->
 		</footer>
 
-		<!-- This line links the external JavaScript file that adds functionality to the sponsor form -->
+		<!-- This line links the external JavaScript file that adds functionality to the sponsor form and table -->
 		<script src="section-4.js"></script>
 	<!-- This line closes the body element -->
 	</body>

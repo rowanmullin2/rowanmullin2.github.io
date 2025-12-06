@@ -240,3 +240,89 @@ footer {
 	/* This line sets the text colour to a light green to indicate success */
 	color: #b9ffb9;
 }
+
+/* This line styles the container that holds the sponsor table */
+#sponsor-table-container {
+	/* This line adds space above the table to separate it from the form */
+	margin-top: 1.5rem;
+}
+
+/* This line styles the sponsor table element */
+#sponsor-table {
+	/* This line makes the table use the full width of its container */
+	width: 100%;
+	/* This line collapses the table borders so that adjacent cells share a single border */
+	border-collapse: collapse;
+	/* This line adds a small top margin above the table */
+	margin-top: 0.5rem;
+}
+
+/* This line styles both header cells and regular cells inside the sponsor table */
+#sponsor-table th, #sponsor-table td {
+	/* This line adds padding inside each table cell so the text has breathing room */
+	padding: 0.5rem;
+	/* This line adds a dark border around each table cell */
+	border: 1px solid #444444;
+	/* This line sets the text alignment to the left inside each cell */
+	text-align: left;
+	/* This line sets the font size slightly smaller than normal text */
+	font-size: 0.9rem;
+}
+
+/* This line styles the table header section of the sponsor table */
+#sponsor-table thead {
+	/* This line sets the background colour of the header row to a dark shade */
+	background-color: #222222;
+	/* This line sets the text colour of the header cells to white for contrast */
+	color: #ffffff;
+}
+
+/* This line styles the summary container that appears below the sponsor table */
+#sponsor-summary {
+	/* This line adds space above the summary so it is separated from the table */
+	margin-top: 1.5rem;
+	/* This line adds padding inside the summary box so the text does not touch the edges */
+	padding: 1rem;
+	/* This line sets a dark background colour behind the summary text */
+	background-color: #1b1b1b;
+	/* This line rounds the corners of the summary container slightly */
+	border-radius: 4px;
+}
+
+/* This line styles the heading inside the sponsor summary container */
+#sponsor-summary h3 {
+	/* This line removes the default top margin from the heading */
+	margin-top: 0;
+	/* This line adds a small bottom margin below the heading */
+	margin-bottom: 0.5rem;
+}
+
+/* This line styles the paragraph that displays the total sponsor count */
+#sponsor-summary p {
+	/* This line removes the default margin so the summary text sits neatly inside the box */
+	margin: 0;
+}
+
+/* This line styles the delete buttons that appear in the sponsor table */
+.sponsor-delete-button {
+	/* This line adds padding inside the delete button to increase the clickable area */
+	padding: 0.25rem 0.75rem;
+	/* This line sets the background colour of the delete button to use the tertiary accent colour */
+	background-color: var(--color-tertiary);
+	/* This line removes the default border from the delete button */
+	border: none;
+	/* This line sets the text colour of the delete button to white for contrast */
+	color: #ffffff;
+	/* This line changes the cursor to a pointer when the user hovers over the delete button */
+	cursor: pointer;
+	/* This line slightly rounds the corners of the delete button */
+	border-radius: 3px;
+	/* This line sets the font size of the delete button text */
+	font-size: 0.85rem;
+}
+
+/* This line styles the delete button when the user hovers over it */
+.sponsor-delete-button:hover {
+	/* This line darkens the background colour of the delete button on hover to give visual feedback */
+	background-color: #a855c4;
+}
