@@ -3,6 +3,7 @@ let representativeNameInput;
 let representativeEmailInput;
 let roleSelected;
 let submitButton;
+let table;
 
 function showError(inputNode, message) {
     let error = document.createElement("div");
@@ -84,14 +85,56 @@ function isValidForm() {
     return valid
 }
 
-const formStorage = [];
-function storeInput(eveNameInput, repreName, repreEmail, repreRole) {
-    formStorage.push({
-        eveNameInput, 
+function saveFormData(formData) {
+
+    const formDataStore = JSON.parse(localStorage.getItem("formData")) || [];
+    formDataStore.push(formData);
+    localStorage.setItem("formData", JSON.stringify(formDataStore));
+
+    console.log(localStorage.getItem("formData"))
+}
+
+function displayTableData() {
+    table.innerHTML = "";
+
+    let formcontents = JSON.parse(localStorage.getItem("formData")) || [];
+
+    formcontents.forEach((formData, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${formData.eventName}</td>
+        <td>${formData.repreName}</td>
+        <td>${formData.repreEmail}</td>
+        <td>${formData.repreRole}</td>
+        <td><button class="remove-row" data-index="${index}">Remove</button></td>
+        `;
+        table.appendChild(row);
+    });
+
+     // Add event listeners to all remove buttons
+    const removeButtons = document.querySelectorAll(".remove-row");
+    removeButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            const idx = e.target.getAttribute("data-index");
+            removeFormData(idx);
+        });
+    });
+}
+
+function removeFormData(index) {
+    let formcontents = JSON.parse(localStorage.getItem("formData")) || [];
+    formcontents.splice(index, 1); 
+    localStorage.setItem("formData", JSON.stringify(formcontents));
+    displayTableData(); 
+}
+
+function storeInput(eventName, repreName, repreEmail, repreRole) {
+    const formStorage ={
+        eventName, 
         repreName, 
         repreEmail, 
-        repreRole});
+        repreRole};
         console.log(formStorage);
+        return formStorage
     }
 
 function init() {
@@ -100,23 +143,30 @@ function init() {
     representativeEmailInput = document.querySelector("#representative-email");
     roleSelected = document.querySelector("#company-role");
     submitButton = document.querySelector("#submit");
+    table = document.querySelector("#formdata-table tbody");
     
+    displayTableData();
     submitButton.addEventListener("click", (e) => {
         e.preventDefault()
         let isValid = isValidForm(eventNameInput, representativeNameInput, representativeEmailInput, roleSelected)
         if (isValid === true) {
-            storeInput(
-            eventNameInput.value, 
-            representativeNameInput.value, 
-            representativeEmailInput.value, 
-            roleSelected.value);
+            let formData = storeInput(
+                eventNameInput.value,
+                representativeNameInput.value,
+                representativeEmailInput.value,
+                roleSelected.value
+            )
+            saveFormData(formData);
+            displayTableData();
+            location.reload();
         }
+
     })
     
 }
 
 if (typeof window === "undefined") {
-    module.exports = { isValidForm, storeInput, formStorage, init};
+    module.exports = { isValidForm, removeFormData, storeInput, displayTableData, init};
 } else {
     init()
 }
