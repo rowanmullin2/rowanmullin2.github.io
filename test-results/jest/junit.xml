@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="9" failures="0" errors="0" time="2.074">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-12-06T04:48:48" time="0.393" tests="1">
+    <testcase classname=" dummy test" name=" dummy test" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="processVolunteer" errors="0" failures="0" skipped="0" timestamp="2025-12-06T04:48:48" time="1.432" tests="8">
+    <testcase classname="processVolunteer returns object with correct values" name="processVolunteer returns object with correct values" time="0.011">
+    </testcase>
+    <testcase classname="validateVolunteer returns no errors for valid input" name="validateVolunteer returns no errors for valid input" time="0.001">
+    </testcase>
+    <testcase classname="validateVolunteer returns error for empty name" name="validateVolunteer returns error for empty name" time="0.001">
+    </testcase>
+    <testcase classname="validateVolunteer returns error for invalid hours" name="validateVolunteer returns error for invalid hours" time="0">
+    </testcase>
+    <testcase classname="validateVolunteer returns error for missing date" name="validateVolunteer returns error for missing date" time="0">
+    </testcase>
+    <testcase classname="validateVolunteer returns error for missing rating" name="validateVolunteer returns error for missing rating" time="0">
+    </testcase>
+    <testcase classname="integration: volunteer form submission submitting valid form adds entry to volunteerEntries and updates table &amp; total hours" name="integration: volunteer form submission submitting valid form adds entry to volunteerEntries and updates table &amp; total hours" time="0.022">
+    </testcase>
+    <testcase classname="integration: volunteer form submission deleting an entry updates table, localStorage and total hours" name="integration: volunteer form submission deleting an entry updates table, localStorage and total hours" time="0.007">
+    </testcase>
+  </testsuite>
+</testsuites>
