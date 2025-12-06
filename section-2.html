@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,84 +5,85 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="section-2.css">
     <script src="section-2.js" defer></script>
+    <script src="load-page-components.js" defer></script>
 </head>
 
-<!-- Main Content -->
-<main>
-    <h1>Volunteer Hours Tracker</h1>
+<body>
+    <!-- Main Content -->
+    <main>
+        <div id="header-container"></div>
+        <div id="nav-container"></div>
 
-    <section>
-        <h2>Log Volunteer Hours</h2>
+        <h1>Volunteer Hours Tracker</h1>
 
+        <section>
+            <h2>Log Volunteer Hours</h2>
 
-        <form id="volunteer-form" novalidate>
+            <form id="volunteer-form" novalidate>
 
-            <!-- Charity Name -->
-            <div class="form-field">
-                <label for="charity">Charity Name</label>
-                <input type="text" id="charity" name="charity" required />
-                <small class="error-message" id="error-charity"></small>
-            </div>
+                <!-- Charity Name -->
+                <div class="form-field">
+                    <label for="charity">Charity Name</label>
+                    <input type="text" id="charity" name="charity" required />
+                    <small class="error-message" id="error-charity"></small>
+                </div>
 
-            <!-- Hours Volunteered -->
-            <div class="form-field">
-                <label for="hours">Hours Volunteered</label>
-                <input type="number" id="hours" name="hours" step="0.1" min="0" required />
-                <small class="error-message" id="error-hours"></small>
-            </div>
+                <!-- Hours Volunteered -->
+                <div class="form-field">
+                    <label for="hours">Hours Volunteered</label>
+                    <input type="number" id="hours" name="hours" step="0.1" min="0" required />
+                    <small class="error-message" id="error-hours"></small>
+                </div>
 
-            <!-- Date -->
-            <div class="form-field">
-                <label for="date">Date of Volunteering</label>
-                <input type="date" id="date" name="date" required />
-                <small class="error-message" id="error-date"></small>
-            </div>
+                <!-- Date -->
+                <div class="form-field">
+                    <label for="date">Date of Volunteering</label>
+                    <input type="date" id="date" name="date" required />
+                    <small class="error-message" id="error-date"></small>
+                </div>
 
-            <!-- Experience Rating -->
-            <div class="form-field">
-          <label for="rating">Volunteer Experience Rating (1–5 Stars)</label>
-          <select id="rating" name="rating" required>
-            <option value="">Select Rating</option>
-            <option value="1">⭐ 1</option>
-            <option value="2">⭐⭐ 2</option>
-            <option value="3">⭐⭐⭐ 3</option>
-            <option value="4">⭐⭐⭐⭐ 4</option>
-            <option value="5">⭐⭐⭐⭐⭐ 5</option>
-          </select>
-            </div>
+                <!-- Experience Rating -->
+                <div class="form-field">
+                    <label for="rating">Volunteer Experience Rating (1–5 Stars)</label>
+                    <select id="rating" name="rating" required>
+                        <option value="">Select Rating</option>
+                        <option value="1">⭐ 1</option>
+                        <option value="2">⭐⭐ 2</option>
+                        <option value="3">⭐⭐⭐ 3</option>
+                        <option value="4">⭐⭐⭐⭐ 4</option>
+                        <option value="5">⭐⭐⭐⭐⭐ 5</option>
+                    </select>
+                </div>
 
-           <!-- Submit -->
-        <button type="submit">Add Volunteer Entry</button>
+                <!-- Submit Button -->
+                <button type="submit">Add Volunteer Entry</button>
 
-        <div id="errors"></div>
+                <div id="errors"></div>
 
-        <h2>Existing Volunteer Logs</h2>
+                <h2>Existing Volunteer Logs</h2>
 
-        <!-- TABLE -->
-        <table id="volunteer-table">
-          <thead>
-            <tr>
-              <th>Charity</th>
-              <th>Hours</th>
-              <th>Date</th>
-              <th>Rating</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+                <!-- TABLE -->
+                <table id="volunteer-table">
+                    <thead>
+                        <tr>
+                            <th>Charity</th>
+                            <th>Hours</th>
+                            <th>Date</th>
+                            <th>Rating</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
 
-        <h3>Total Hours: <span id="total-hours">0</span></h3>
+                <h3>Total Hours: <span id="total-hours">0</span></h3>
 
-      </form>
+            </form>
+        </section>
+    </main>
 
-    </section>
-  </main>
-
-  <footer>
-    <small>&copy; 2025 Volunteer Tracker</small>
-  </footer>
+    <!-- Shared Footer -->
+    <div id="footer-container"></div>
 
 </body>
-
 </html>

@@ -5,34 +5,62 @@
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 /* Global styles */
 body {
   font-family: comic sans;
   line-height: 1.6;
   background-color: #111142;
   color: #979799;
+=======
+/* styles */
+body {
+  font-family: comic sans;
+  line-height: 2.0;
+  background-color: #111142; /* primary */
+  color: #979799; /* secondary */
+>>>>>>> origin/main
   padding: 20px;
 }
 
 /* Headings */
+<<<<<<< HEAD
 h1, h2, h3 {
   color: #C96DE5;
   margin-bottom: 15px;
+=======
+h1, h2 {
+  color: #C96DE5; /* tertiary */
+  margin-bottom: 10px;
+>>>>>>> origin/main
 }
 
 h1 {
   text-align: center;
+<<<<<<< HEAD
   margin-bottom: 25px;
+=======
+  margin-bottom: 20px;
+>>>>>>> origin/main
 }
 
 /* Form container */
 section {
+<<<<<<< HEAD
   background: #ffffff;
   padding: 20px;
   border-radius: 8px;
   max-width: 700px;
   margin: 0 auto 30px auto;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+=======
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  box-shadow: 0 4px 8px #111142;
+>>>>>>> origin/main
 }
 
 /* Form fields */
@@ -43,8 +71,12 @@ section {
 label {
   display: block;
   font-weight: bold;
+<<<<<<< HEAD
   margin-bottom: 6px;
   color: #111142;
+=======
+  margin-bottom: 5px;
+>>>>>>> origin/main
 }
 
 input, select, textarea {
@@ -56,12 +88,21 @@ input, select, textarea {
 }
 
 input:focus, select:focus, textarea:focus {
+<<<<<<< HEAD
   border-color: #979799;
   outline: none;
   box-shadow: 0 0 4px rgba(201, 109, 229, 0.5);
 }
 
 /* Submit Button */
+=======
+  border-color: #fff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(26, 50, 67, 0.4);
+}
+
+/* Button */
+>>>>>>> origin/main
 button {
   background-color: #111142;
   color: #fff;
@@ -70,6 +111,7 @@ button {
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
+<<<<<<< HEAD
   transition: background 0.3s ease;
   margin-top: 10px;
 }
@@ -136,6 +178,13 @@ tbody tr:hover {
   font-weight: bold;
   color: #C96DE5;
   font-size: 1.3rem;
+=======
+  transition: background 0.5s ease;
+}
+
+button:hover {
+  background-color: #2b2b7a; /* light hover */
+>>>>>>> origin/main
 }
 
 /* Footer */
@@ -143,5 +192,23 @@ footer {
   text-align: center;
   margin-top: 40px;
   font-size: 0.9rem;
+<<<<<<< HEAD
   color: #C96DE5;
+=======
+  color: #111142;
+}
+
+/* Embedded sections (object/iframe) */
+object, iframe {
+  border: 1px solid #111142;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+/* Error messages for validation */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+>>>>>>> origin/main
 }
