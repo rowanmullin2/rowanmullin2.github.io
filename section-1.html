@@ -56,8 +56,27 @@
 
           <!-- Submit Button -->
           <button type="submit">Add Donation</button>
+
+          <div id="errors"></div>
+
+        <h2>Existing Donations</h2>
+        <table id="donation-table">
+          <thead>
+            <tr>
+              <th>Charity</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Comment</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <h3>Total Donated: $<span id="total-amount">0</span></h3>
         </form>
       </section>
+
     </main>
 
     <!-- Shared Footer -->
