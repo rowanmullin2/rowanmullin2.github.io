@@ -5,34 +5,34 @@
   box-sizing: border-box;
 }
 
-/* styles */
+/* Global styles */
 body {
   font-family: comic sans;
-  line-height: 2.0;
-  background-color: #111142; /* primary */
-  color: #979799; /* secondary */
+  line-height: 1.6;
+  background-color: #111142;
+  color: #979799;
   padding: 20px;
 }
 
 /* Headings */
-h1, h2 {
-  color: #C96DE5; /* tertiary */
-  margin-bottom: 10px;
+h1, h2, h3 {
+  color: #C96DE5;
+  margin-bottom: 15px;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 /* Form container */
 section {
-  background: #fff;
+  background: #ffffff;
   padding: 20px;
   border-radius: 8px;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto 30px auto;
-  box-shadow: 0 4px 8px #111142;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 /* Form fields */
@@ -43,7 +43,8 @@ section {
 label {
   display: block;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  color: #111142;
 }
 
 input, select, textarea {
@@ -55,12 +56,12 @@ input, select, textarea {
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: #fff;
+  border-color: #979799;
   outline: none;
-  box-shadow: 0 0 4px rgba(26, 50, 67, 0.4);
+  box-shadow: 0 0 4px rgba(201, 109, 229, 0.5);
 }
 
-/* Button */
+/* Submit Button */
 button {
   background-color: #111142;
   color: #fff;
@@ -69,11 +70,72 @@ button {
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.5s ease;
+  transition: background 0.3s ease;
+  margin-top: 10px;
 }
 
 button:hover {
-  background-color: #2b2b7a; /* light hover */
+  background-color: #2a2a6a;
+}
+
+/* Error messages */
+#errors {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#errors p {
+  background: #ffdddd;
+  color: #a30000;
+  padding: 8px;
+  border-left: 4px solid #a30000;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+/* Volunteer Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #C96DE5;
+  color: #ffffff;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f3e8fa;
+}
+
+.delete-btn {
+  background-color: #a30000;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}
+
+/* Summary Section */
+#total-hours {
+  font-weight: bold;
+  color: #C96DE5;
+  font-size: 1.3rem;
 }
 
 /* Footer */
@@ -81,19 +143,5 @@ footer {
   text-align: center;
   margin-top: 40px;
   font-size: 0.9rem;
-  color: #111142;
-}
-
-/* Embedded sections (object/iframe) */
-object, iframe {
-  border: 1px solid #111142;
-  border-radius: 6px;
-  margin-bottom: 20px;
-}
-
-/* Error messages for validation */
-.error-message {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: 5px;
+  color: #C96DE5;
 }
