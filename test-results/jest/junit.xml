@@ -1,25 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="9" failures="0" errors="0" time="2.074">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-12-06T04:48:48" time="0.393" tests="1">
-    <testcase classname=" dummy test" name=" dummy test" time="0.007">
+<testsuites name="jest tests" tests="10" failures="2" errors="0" time="2.314">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-12-06T05:32:21" time="0.413" tests="1">
+    <testcase classname=" dummy test" name=" dummy test" time="0.006">
     </testcase>
   </testsuite>
-  <testsuite name="processVolunteer" errors="0" failures="0" skipped="0" timestamp="2025-12-06T04:48:48" time="1.432" tests="8">
-    <testcase classname="processVolunteer returns object with correct values" name="processVolunteer returns object with correct values" time="0.011">
+  <testsuite name="createVolunteerEntry" errors="0" failures="2" skipped="0" timestamp="2025-12-06T05:32:21" time="1.672" tests="9">
+    <testcase classname="createVolunteerEntry returns object with correct fields" name="createVolunteerEntry returns object with correct fields" time="0.006">
     </testcase>
-    <testcase classname="validateVolunteer returns no errors for valid input" name="validateVolunteer returns no errors for valid input" time="0.001">
+    <testcase classname="validateVolunteerData returns no errors for valid entry" name="validateVolunteerData returns no errors for valid entry" time="0.001">
     </testcase>
-    <testcase classname="validateVolunteer returns error for empty name" name="validateVolunteer returns error for empty name" time="0.001">
+    <testcase classname="validateVolunteerData returns error if charity missing" name="validateVolunteerData returns error if charity missing" time="0.001">
     </testcase>
-    <testcase classname="validateVolunteer returns error for invalid hours" name="validateVolunteer returns error for invalid hours" time="0">
+    <testcase classname="validateVolunteerData returns error if hours missing or invalid" name="validateVolunteerData returns error if hours missing or invalid" time="0.002">
+      <failure>Error: expect(received).toMatch(expected)
+
+Expected pattern: /hours/i
+Received string:  &quot;&quot;
+    at Object.toMatch (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\section-2.test.js:64:59)
+    at Promise.finally.completed (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusTest (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:947:3)
+    at C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-runner\build\testWorker.js:275:16)
+    at runTest (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-runner\build\testWorker.js:343:7)
+    at Object.worker (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-runner\build\testWorker.js:497:12)</failure>
     </testcase>
-    <testcase classname="validateVolunteer returns error for missing date" name="validateVolunteer returns error for missing date" time="0">
+    <testcase classname="integration: volunteer form submission valid submission adds entry" name="integration: volunteer form submission valid submission adds entry" time="0.008">
     </testcase>
-    <testcase classname="validateVolunteer returns error for missing rating" name="validateVolunteer returns error for missing rating" time="0">
+    <testcase classname="integration: volunteer form submission invalid submission shows error and does not add" name="integration: volunteer form submission invalid submission shows error and does not add" time="0.003">
     </testcase>
-    <testcase classname="integration: volunteer form submission submitting valid form adds entry to volunteerEntries and updates table &amp; total hours" name="integration: volunteer form submission submitting valid form adds entry to volunteerEntries and updates table &amp; total hours" time="0.022">
+    <testcase classname="localStorage save and load entries from localStorage" name="localStorage save and load entries from localStorage" time="0.002">
     </testcase>
-    <testcase classname="integration: volunteer form submission deleting an entry updates table, localStorage and total hours" name="integration: volunteer form submission deleting an entry updates table, localStorage and total hours" time="0.007">
+    <testcase classname="Volunteer Table &amp; Total Hours renderVolunteerTable displays entries in table" name="Volunteer Table &amp; Total Hours renderVolunteerTable displays entries in table" time="0.003">
+    </testcase>
+    <testcase classname="Volunteer Table &amp; Total Hours deleteVolunteerEntry removes entry and updates table &amp; total hours" name="Volunteer Table &amp; Total Hours deleteVolunteerEntry removes entry and updates table &amp; total hours" time="0.002">
+      <failure>TypeError: deleteVolunteerEntry is not a function
+    at Object.deleteVolunteerEntry (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\section-2.test.js:166:5)
+    at Promise.finally.completed (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:1497:10)
+    at _callCircusTest (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at _runTest (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:947:3)
+    at C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:857:11)
+    at run (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\jestAdapterInit.js:1918:21)
+    at jestAdapter (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-circus\build\runner.js:101:19)
+    at runTestInternal (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-runner\build\testWorker.js:275:16)
+    at runTest (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-runner\build\testWorker.js:343:7)
+    at Object.worker (C:\Users\parne\OneDrive\Documents\rrc_polytech\fall term courses\front end\assignments\new group project\node_modules\jest-runner\build\testWorker.js:497:12)</failure>
     </testcase>
   </testsuite>
 </testsuites>
