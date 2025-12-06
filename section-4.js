@@ -17,6 +17,8 @@ const sponsorEventInput = document.getElementById("sponsor-event");
 const sponsorFeedback = document.getElementById("sponsor-feedback");
 // This line gets the table body element where sponsor rows will be displayed
 const sponsorTableBody = document.getElementById("sponsor-table-body");
+// This line declares a string constant that will be used as the key for storing sponsor data in localStorage
+const SPONSOR_STORAGE_KEY = "sponsorEntries";
 
 // This line defines a function that creates a sponsor object from individual field values
 function createSponsorEntry(brand, name, email, comment, eventName) {
@@ -165,6 +167,54 @@ function renderSponsorTable() {
 	}
 }
 
+// This line defines a function that saves the sponsorEntries array into localStorage
+function saveSponsorEntriesToLocalStorage() {
+	// This line checks that the localStorage object exists before trying to use it
+	if (typeof localStorage === "undefined") {
+		// This line exits the function early when localStorage is not available, such as in some test environments
+		return;
+	}
+	// This line converts the sponsorEntries array into a JSON string so it can be stored as text
+	const sponsorEntriesJson = JSON.stringify(sponsorEntries);
+	// This line saves the JSON string into localStorage using the SPONSOR_STORAGE_KEY constant as the storage key
+	localStorage.setItem(SPONSOR_STORAGE_KEY, sponsorEntriesJson);
+}
+
+// This line defines a function that loads sponsor entries from localStorage back into the sponsorEntries array
+function loadSponsorEntriesFromLocalStorage() {
+	// This line checks that the localStorage object exists before trying to use it
+	if (typeof localStorage === "undefined") {
+		// This line exits the function early when localStorage is not available
+		return;
+	}
+	// This line reads any previously stored sponsor data string from localStorage using the storage key
+	const storedSponsorEntries = localStorage.getItem(SPONSOR_STORAGE_KEY);
+	// This line checks if there was no stored value in localStorage
+	if (storedSponsorEntries === null) {
+		// This line exits the function early when there is nothing to load
+		return;
+	}
+	// This line wraps the JSON parsing in a try block in case the stored text is not valid JSON
+	try {
+		// This line parses the JSON string from localStorage back into a regular JavaScript array
+		const parsedEntries = JSON.parse(storedSponsorEntries);
+		// This line clears any existing entries from the sponsorEntries array so it matches what was stored
+		sponsorEntries.length = 0;
+		// This line starts a loop that runs once for each parsed sponsor object loaded from storage
+		for (let index = 0; index < parsedEntries.length; index++) {
+			// This line stores the sponsor object for the current loop position in a local variable
+			const sponsor = parsedEntries[index];
+			// This line adds the sponsor object from storage into the sponsorEntries array in memory
+			sponsorEntries.push(sponsor);
+		}
+		// This line calls renderSponsorTable so the table in the page shows the sponsors that were loaded from storage
+		renderSponsorTable();
+	} catch (error) {
+		// This line logs an error to the console when the stored data cannot be parsed correctly
+		console.error("Unable to read sponsor entries from localStorage", error);
+	}
+}
+
 // This line defines a function that handles the sponsor form submit event
 function handleSponsorFormSubmit(event) {
 	// This line prevents the browser from performing its default form submission behaviour
@@ -193,7 +243,9 @@ function handleSponsorFormSubmit(event) {
 	}
 	// This line adds the valid sponsor object to the sponsorEntries array for temporary storage
 	sponsorEntries.push(sponsorData);
-	// This line calls renderSponsorTable so the new sponsor appears in the table on the page
+	// This line calls a helper function to save the updated sponsorEntries array into localStorage
+	saveSponsorEntriesToLocalStorage();
+	// This line calls a helper function so the sponsor table in the page is rebuilt with the latest entries
 	renderSponsorTable();
 	// This line resets the form fields so the user can add another sponsor
 	sponsorForm.reset();
@@ -206,7 +258,13 @@ function handleSponsorFormSubmit(event) {
 // This line adds an event listener so the handleSponsorFormSubmit function runs when the form is submitted
 sponsorForm.addEventListener("submit", handleSponsorFormSubmit);
 
-// This line checks whether the special module object exists so Jest tests can import functions in a Node environment
+// This line checks that the code is running in a browser window before trying to load any saved sponsor data
+if (typeof window !== "undefined") {
+	// This line calls the function that loads sponsor entries from localStorage and updates the table display
+	loadSponsorEntriesFromLocalStorage();
+}
+
+// This line checks whether the special 'module' object exists and has an exports property, which means the code is running in a Node or Jest environment rather than just in the browser
 if (typeof module !== "undefined" && module.exports) {
 	// This line exports selected values so that Jest tests can import and use these functions and the temporary data array
 	module.exports = {
@@ -218,7 +276,13 @@ if (typeof module !== "undefined" && module.exports) {
 		validateSponsorData: validateSponsorData,
 		// This line exposes the handleSponsorFormSubmit function so integration tests can simulate submitting the form with Jest
 		handleSponsorFormSubmit: handleSponsorFormSubmit,
-		// This line exposes the renderSponsorTable function so future Jest tests can confirm the table output
+		// This line exposes the renderSponsorTable function so tests can confirm that the table rows match the sponsorEntries array
 		renderSponsorTable: renderSponsorTable,
+		// This line exposes the saveSponsorEntriesToLocalStorage function so tests can check that it writes data into localStorage
+		saveSponsorEntriesToLocalStorage: saveSponsorEntriesToLocalStorage,
+		// This line exposes the loadSponsorEntriesFromLocalStorage function so tests can check that it rebuilds the sponsorEntries array from localStorage
+		loadSponsorEntriesFromLocalStorage: loadSponsorEntriesFromLocalStorage,
+		// This line exposes the SPONSOR_STORAGE_KEY constant so tests can refer to the same key used for localStorage
+		SPONSOR_STORAGE_KEY: SPONSOR_STORAGE_KEY,
 	};
 }
